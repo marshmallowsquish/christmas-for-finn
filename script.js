@@ -1,0 +1,9 @@
+/* DECLARE VARIABLES - selectors, working values */
+
+/* DECLARE FUNCTIONS */
+
+/* DECLARE EVENT HANDLERS */
+
+/* DECLARE NAMESPACES */
+
+/* SCRIPT */
