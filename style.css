@@ -4,8 +4,26 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: green;
+}
+
+h1 {
+  font-size: 50px;
+  text-align: center;
+  margin: 15px;
+}
+
+#content-container {
+  width: 80vw;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .ornament-box {
-  height: 100px;
-  width: 100px;
+  height: 200px;
+  width: 200px;
   border: 2px solid black;
+  flex: none;
 }
