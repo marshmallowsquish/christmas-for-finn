@@ -12,6 +12,7 @@ const INIT = {
   createCalendar: function() {
     for (let i = 0; i < 25; i++) {
       let ornamentBox = document.createElement("img");
+      ornamentBox.setAttribute("src", "./img/empty-day.jpeg")
       ornamentBox.classList.add("ornament-box");
       contentContainer.appendChild(ornamentBox);
     }
