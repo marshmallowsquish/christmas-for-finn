@@ -6,13 +6,47 @@
 
 #top {
   height: 80vh;
+  display: flex;
 }
 
-#left {
-  border-right: 2px solid black;
+#left,
+#right {
+  height: 100%;
+}
+#center {
+  height: 100%;
+  flex: 1;
+}
+
+#star-count {
+  font-size: 2rem;
+  height: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#stars {
+  margin: 10px;
+}
+
+#themes {
+  height: 85%;
+}
+
+.top-buttons {
+  height: 25%;
+  aspect-ratio: 1;
+  border: 4px outset black;
+  display: block;
 }
 
 #bottom {
   height: 20vh;
-  border: 2px solid black;
+}
+
+.song-buttons {
+  height: 100%;
+  width: 20%;
+  border: 4px outset black;
 }
