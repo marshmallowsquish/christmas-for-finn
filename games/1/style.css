@@ -13,12 +13,14 @@
 #right {
   height: 100%;
 }
+
 #center {
   height: 100%;
   flex: 1;
 }
 
-#star-count {
+#star-count,
+#back-button {
   font-size: 2rem;
   height: 15%;
   display: flex;
@@ -30,6 +32,7 @@
   margin: 10px;
 }
 
+#sounds,
 #themes {
   height: 85%;
 }
@@ -43,6 +46,13 @@
 
 #bottom {
   height: 20vh;
+}
+
+#back-button {
+  color: hsl(120, 60%, 95%);
+  background-color: hsl(120, 60%, 75%);
+  width: 100%;
+  border: 5px outset hsl(120, 60%, 50%);
 }
 
 .song-buttons {

@@ -1,7 +1,8 @@
 /* DECLARE VARIABLES - selectors, working values */
 
 //selectors
-const leftContainer = document.getElementById("left");
+const backButton = document.getElementById("back-button");
+const soundsContainer = document.getElementById("sounds");
 const themesContainer = document.getElementById("themes");
 const bottomContainer = document.getElementById("bottom");
 const starCountDisplay = document.getElementById("stars");
@@ -12,6 +13,9 @@ let stars = 0;
 /* DECLARE FUNCTIONS */
 
 /* DECLARE EVENT HANDLERS */
+backButton.addEventListener("click", function() {
+  window.location.href = "./../../index.html";
+})
 
 /* DECLARE NAMESPACES */
 
@@ -20,7 +24,7 @@ const INIT = {
     for (let i = 0; i < 4; i++) {
       let button = document.createElement("img");
       button.classList.add("top-buttons");
-      leftContainer.appendChild(button);
+      soundsContainer.appendChild(button);
     }
   },
   createThemeButtons: function() {
