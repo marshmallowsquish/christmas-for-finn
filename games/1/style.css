@@ -15,6 +15,7 @@
 }
 
 #center {
+  background-color: hsl(0, 0%, 0%);
   height: 100%;
   flex: 1;
 }
@@ -26,6 +27,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+#star-count {
+  border: 4px solid black;
 }
 
 #stars {
@@ -52,7 +57,7 @@
   color: hsl(120, 60%, 95%);
   background-color: hsl(120, 60%, 75%);
   width: 100%;
-  border: 5px outset hsl(120, 60%, 50%);
+  border: 4px outset hsl(120, 60%, 50%);
 }
 
 .song-buttons {
