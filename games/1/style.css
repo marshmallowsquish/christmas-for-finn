@@ -33,6 +33,10 @@
   border: 4px solid black;
 }
 
+#back-button img {
+  height: 3rem;
+}
+
 #stars {
   margin: 10px;
 }
