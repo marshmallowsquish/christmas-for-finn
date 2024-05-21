@@ -14,12 +14,28 @@ let stars = 0;
 
 /* DECLARE FUNCTIONS */
 function startGame() {
-  setInterval(displayStar, 1000);
+  setInterval(displayStar, getNumber(3000 + 1));
 }
 
 function displayStar() {
-  star.classList.remove("hidden")
+  star.classList.remove("hidden");
+  star.animate(starKeyframes, starOptions);
 }
+
+function getNumber(num) {
+  return Math.floor(Math.random() * num);
+}
+
+const starKeyframes = [
+  { transform: "rotate(360deg) scale(0)"},
+  { transform: "rotate(0) scale(1)" },
+  { transform: "rotate(360deg) scale(0) translateX(100%)", backgroundColor: "white" },
+];
+
+const starOptions = {
+  duration: 1000,
+  iterations: 1,
+};
 
 /* DECLARE EVENT HANDLERS */
 backButton.addEventListener("click", function() {
