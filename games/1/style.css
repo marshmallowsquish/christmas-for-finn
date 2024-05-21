@@ -58,7 +58,6 @@
 }
 
 #back-button {
-  color: hsl(120, 60%, 95%);
   background-color: hsl(120, 60%, 75%);
   width: 100%;
   border: 4px outset hsl(120, 60%, 50%);
