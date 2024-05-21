@@ -7,14 +7,28 @@ const themesContainer = document.getElementById("themes");
 const bottomContainer = document.getElementById("bottom");
 const starCountDisplay = document.getElementById("stars");
 
+const star = document.getElementById("star");
+
 //working values
 let stars = 0;
 
 /* DECLARE FUNCTIONS */
+function startGame() {
+  setInterval(displayStar, 1000);
+}
+
+function displayStar() {
+  star.classList.remove("hidden")
+}
 
 /* DECLARE EVENT HANDLERS */
 backButton.addEventListener("click", function() {
   window.location.href = "./../../index.html";
+})
+
+star.addEventListener("click", function() {
+  stars += 1
+  INIT.displayStarCount();
 })
 
 /* DECLARE NAMESPACES */
@@ -51,3 +65,4 @@ INIT.createSoundButtons();
 INIT.createThemeButtons();
 INIT.createSongButtons();
 INIT.displayStarCount();
+startGame();
