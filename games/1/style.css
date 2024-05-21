@@ -17,6 +17,9 @@
 #center {
   background-color: hsl(0, 0%, 0%);
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   flex: 1;
 }
 
