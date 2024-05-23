@@ -6,7 +6,7 @@ const soundsContainer = document.getElementById("sounds");
 const themesContainer = document.getElementById("themes");
 const bottomContainer = document.getElementById("bottom");
 const starCountDisplay = document.getElementById("stars");
-const star = document.getElementById("star");
+const center = document.getElementById("center");
 
 //working values
 let stars = 0;
@@ -14,7 +14,17 @@ let stars = 0;
 /* DECLARE FUNCTIONS */
 
 function displayStar() {
-  star.setAttribute("display", "inline")
+  let star = document.createElement("img");
+  star.setAttribute("src", "./img/star.svg");
+
+  star.addEventListener("click", function() {
+    star.remove();
+    stars += 1
+    INIT.displayStarCount();
+  })
+
+  center.appendChild(star);
+
   let starAnimation = new Array(new FirstKeyframe, new SecondKeyframe);
   let starOptions = new Options;
   
@@ -59,11 +69,6 @@ backButton.addEventListener("click", function() {
   window.location.href = "./../../index.html";
 })
 
-star.addEventListener("click", function() {
-  star.setAttribute("display", "none")
-  stars += 1
-  INIT.displayStarCount();
-})
 
 /* DECLARE NAMESPACES */
 
@@ -91,9 +96,6 @@ const INIT = {
   },
   displayStarCount: function() {
     starCountDisplay.textContent = stars;
-  },
-  hideStar: function() {
-    star.setAttribute("display", "none");
   }
 }
 
@@ -102,7 +104,6 @@ INIT.createSoundButtons();
 INIT.createThemeButtons();
 INIT.createSongButtons();
 INIT.displayStarCount();
-INIT.hideStar();
 
 //post-script selectors
 const centerDimensions = document.getElementById("center").getBoundingClientRect();
