@@ -88,6 +88,7 @@ const INIT = {
   createSoundButtons: function() {
     for (let i = 0; i < 4; i++) {
       let button = document.createElement("img");
+      button.setAttribute("src", "./img/blue.png");
       button.classList.add("top-buttons");
       soundsContainer.appendChild(button);
     }
@@ -95,6 +96,7 @@ const INIT = {
   createThemeButtons: function() {
     for (let i = 0; i < 4; i++) {
       let button = document.createElement("img");
+      button.setAttribute("src", "./img/blue.png");
       button.classList.add("top-buttons");
       themesContainer.appendChild(button);
     }
@@ -102,6 +104,7 @@ const INIT = {
   createSongButtons: function() {
     for (let i = 0; i < 5; i++) {
       let button = document.createElement("img");
+      button.setAttribute("src", "./img/blue.png");
       button.classList.add("song-buttons");
       bottomContainer.appendChild(button);
     }
