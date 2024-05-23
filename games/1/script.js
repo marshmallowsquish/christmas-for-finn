@@ -12,23 +12,35 @@ const center = document.getElementById("center");
 let stars = 0;
 
 /* DECLARE FUNCTIONS */
+function startGame() {
+  displayStar();
+  setTimeout(startGame, getNumber(5000 + 1) + 1000)
+}
 
 function displayStar() {
+  //create and append star
   let star = document.createElement("img");
   star.setAttribute("src", "./img/star.svg");
-
+  star.style.position = "absolute";
   star.addEventListener("click", function() {
-    star.remove();
+    removeStar();
     stars += 1
     INIT.displayStarCount();
   })
-
   center.appendChild(star);
 
+  //generate new animation
+  let durationParam = getNumber(6000 + 1) + 1000;
   let starAnimation = new Array(new FirstKeyframe, new SecondKeyframe);
-  let starOptions = new Options;
-  
+  let starOptions = new Options(durationParam);
+
   star.animate(starAnimation, starOptions);
+  
+  //remove star
+  setTimeout(removeStar, durationParam);
+  function removeStar() {
+    star.remove()
+  }
 }
 
 function getNumber(num) {
@@ -110,7 +122,7 @@ const centerDimensions = document.getElementById("center").getBoundingClientRect
 
 //animation constructors
 function FirstKeyframe() {
-  this.transform =  `scale(0.${getNumber(9 + 1)}) translateX(${getXAxis()}) translateY(${getYAxis()})`;
+  this.transform =  `scale(0.${getNumber(9 + 1)}1) translateX(${getXAxis()}) translateY(${getYAxis()})`;
   this.fill = "#FFFFFF";
 }
 
@@ -119,12 +131,12 @@ function SecondKeyframe() {
   this.fill = "#FFFFFF";
 }
 
-function Options() {
-  this.duration = getNumber(6000 + 1) + 1000,
+function Options(durationParam) {
+  this.duration = durationParam,
   this.iterations = 1,
-  this.easing = `cubic-bezier(0.${getNumber(99 + 1)}, 0.${getNumber(99 + 1)}, 0.${getNumber(99 + 1)}, 0.${getNumber(99 + 1)})`
+  this.easing = `cubic-bezier(0.${getNumber(99 + 1)}, 0.${getNumber(99 + 1)}, 0.${getNumber(99 + 1)}, 0.${getNumber(99 + 1)})`,
+  this.fill = "both";
 }
 
 //game start
-setInterval(displayStar, 4000)
-
+setTimeout(startGame, getNumber(5000 + 1) + 1000)
