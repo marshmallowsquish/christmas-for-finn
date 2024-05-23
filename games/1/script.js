@@ -14,7 +14,10 @@ let stars = 0;
 /* DECLARE FUNCTIONS */
 
 function displayStar() {
-  star.animate(scaleTranslateStar, starOptions);
+  let starAnimation = new Array(new Keyframe, new Keyframe);
+  let starOptions = new Options;
+
+  star.animate(starAnimation, starOptions);
 }
 
 function getNumber(num) {
@@ -99,11 +102,16 @@ const rotateScaleTranslateStar = [
   { transform: `rotate(${getPosOrNeg()}360deg) scale(0.${getNumber(9 + 1)}) translateX(${getXAxis()}) translateY(${getYAxis()})`, fill: "#FFFFFF"},
 ];
 
-const starOptions = {
-  duration: getNumber(6000 + 1) + 1000,
-  iterations: 1,
-  easing: `cubic-bezier(0.${getNumber(99 + 1)}, 0.${getNumber(99 + 1)}, 0.${getNumber(99 + 1)}, 0.${getNumber(99 + 1)})`
-};
+function Keyframe() {
+  this.transform =  `scale(0.${getNumber(9 + 1)}) translateX(${getXAxis()}) translateY(${getYAxis()})`;
+  this.fill = "#FFFFFF";
+}
+
+function Options() {
+  this.duration = getNumber(6000 + 1) + 1000,
+  this.iterations = 1,
+  this.easing = `cubic-bezier(0.${getNumber(99 + 1)}, 0.${getNumber(99 + 1)}, 0.${getNumber(99 + 1)}, 0.${getNumber(99 + 1)})`
+}
 
 //game start
 setInterval(function() {
