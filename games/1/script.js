@@ -14,9 +14,10 @@ let stars = 0;
 /* DECLARE FUNCTIONS */
 
 function displayStar() {
-  let starAnimation = new Array(new Keyframe, new Keyframe);
+  star.setAttribute("display", "inline")
+  let starAnimation = new Array(new FirstKeyframe, new SecondKeyframe);
   let starOptions = new Options;
-
+  
   star.animate(starAnimation, starOptions);
 }
 
@@ -31,6 +32,16 @@ function getPosOrNeg() {
     return "-";
   } else {
     return "+";
+  }
+}
+
+function getRotate() {
+  let number = getNumber(2)
+
+  if (number === 0) {
+    return "";
+  } else {
+    return `rotate(${getPosOrNeg()}${getNumber(360 + 1)}deg)`;
   }
 }
 
@@ -49,6 +60,7 @@ backButton.addEventListener("click", function() {
 })
 
 star.addEventListener("click", function() {
+  star.setAttribute("display", "none")
   stars += 1
   INIT.displayStarCount();
 })
@@ -79,6 +91,9 @@ const INIT = {
   },
   displayStarCount: function() {
     starCountDisplay.textContent = stars;
+  },
+  hideStar: function() {
+    star.setAttribute("display", "none");
   }
 }
 
@@ -87,23 +102,19 @@ INIT.createSoundButtons();
 INIT.createThemeButtons();
 INIT.createSongButtons();
 INIT.displayStarCount();
+INIT.hideStar();
 
 //post-script selectors
 const centerDimensions = document.getElementById("center").getBoundingClientRect();
 
-//animations
-const scaleTranslateStar = [
-  { transform: `scale(0.${getNumber(9 + 1)}) translateX(${getXAxis()}) translateY(${getYAxis()})`, fill: "#FFFFFF"},
-  { transform: `scale(0.${getNumber(9 + 1)}) translateX(${getXAxis()}) translateY(${getYAxis()})`, fill: "#FFFFFF"},
-];
-
-const rotateScaleTranslateStar = [
-  { transform: `rotate(0) scale(0.${getNumber(9 + 1)}) translateX(${getXAxis()}) translateY(${getYAxis()}))`, fill: "#FFFFFF"},
-  { transform: `rotate(${getPosOrNeg()}360deg) scale(0.${getNumber(9 + 1)}) translateX(${getXAxis()}) translateY(${getYAxis()})`, fill: "#FFFFFF"},
-];
-
-function Keyframe() {
+//animation constructors
+function FirstKeyframe() {
   this.transform =  `scale(0.${getNumber(9 + 1)}) translateX(${getXAxis()}) translateY(${getYAxis()})`;
+  this.fill = "#FFFFFF";
+}
+
+function SecondKeyframe() {
+  this.transform =  `${getRotate()} scale(0.${getNumber(9 + 1)}) translateX(${getXAxis()}) translateY(${getYAxis()})`;
   this.fill = "#FFFFFF";
 }
 
@@ -114,7 +125,5 @@ function Options() {
 }
 
 //game start
-setInterval(function() {
-  if (star.getAttribute("fill") === "#000000") displayStar();
-}, 1000)
+setInterval(displayStar, 4000)
 
