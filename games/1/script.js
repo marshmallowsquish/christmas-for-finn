@@ -23,6 +23,8 @@ const clickSound = {
   10: new Audio("./audio/10_mattwer3-freesounds.wav")
 }
 
+const colorSound = new Audio("./audio/new-color_alexkandrell-freesounds.wav");
+
 //define colors
 const colorList = [
   { name: "red", hex: "#FF0000" },
@@ -49,11 +51,6 @@ function displayStar() {
 
   //make stars clickable
   star.addEventListener("click", function() {
-    clickSound[GET.number(10) + 1].play();
-  })
-
-  //add audio to star clicks
-  star.addEventListener("click", function() {
     removeStar();
     stars += 1
     INIT.displayStarCount();
@@ -68,8 +65,17 @@ function displayStar() {
   let starOptions = new Options(durationParam);
 
   star.animate(starAnimation, starOptions);
+
+  //add audio to star clicks
+  star.addEventListener("click", function() {
+    if (color === "#FFFFFF") {
+      clickSound[GET.number(10) + 1].play();
+    } else {
+      colorSound.play();
+    }
+  })
   
-  //remove star
+  //remove star at end of animation
   setTimeout(removeStar, durationParam);
   function removeStar() {
     star.remove()
@@ -137,11 +143,13 @@ const GET = {
     }
   },
   hex: function() {
-    let number = GET.number(1);
+    let number = GET.number(10);
   
     if (number === 0) {
       color = `${colorList[GET.number(4)].hex}`;
-    } 
+    } else {
+      color = "#FFFFFF"
+    }
   
     return color;
   },
@@ -171,7 +179,7 @@ function FirstKeyframe() {
 
 function SecondKeyframe() {
   this.transform =  `${GET.rotate()} scale(0.${GET.number(9 + 1)}) translateX(${GET.xAxis()}) translateY(${GET.yAxis()})`;
-  this.fill = `${GET.hex()}`;
+  this.fill = `${color}`;
 }
 
 function Options(durationParam) {
@@ -189,3 +197,8 @@ setTimeout(startGame, GET.number(5000 + 1) + 1000)
 //fix audio lag
 //fade out audio for less abrupt transitions
 //it sometimes doesn't play the audio
+
+/* FEATURES */
+//sound buttons double as sky changers
+//boing sound for changing star color
+//songs add temporary effect for duration of song, or until click off. one is to change color hue. for this, simply have BOTH keyframes getHex with certainty.
