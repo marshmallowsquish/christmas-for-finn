@@ -1,4 +1,4 @@
-/* DECLARE VARIABLES - selectors, working values */
+/* DECLARE VARIABLES - selectors, define audio, working values */
 
 //selectors
 const backButton = document.getElementById("back-button");
@@ -7,6 +7,20 @@ const themesContainer = document.getElementById("themes");
 const bottomContainer = document.getElementById("bottom");
 const starCountDisplay = document.getElementById("stars");
 const center = document.getElementById("center");
+
+//define audio
+const clickSound = {
+  1: new Audio("./audio/1_j_soundeffects-freesounds_trim.wav"),
+  2: new Audio("./audio/2_timouse-freesound_trim-1.wav"),
+  3: new Audio("./audio/3_timouse-freesound_trim-2.wav"),
+  4: new Audio("./audio/4_mashedtatoes2-freeounds_trim.wav"),
+  5: new Audio("./audio/5_andersmmg-freesound.wav"),
+  6: new Audio("./audio/6_legitcheese-freesounds.mp3"),
+  7: new Audio("./audio/7_mlaudio-freesounds.wav"),
+  8: new Audio("./audio/8_suzenako-freesounds.wav"),
+  9: new Audio("./audio/9_mootmcnoodles-freesounds.wav"),
+  10: new Audio("./audio/10_mattwer3-freesounds.wav")
+}
 
 //working values
 let stars = 0;
@@ -18,15 +32,24 @@ function startGame() {
 }
 
 function displayStar() {
-  //create and append star
+  //create star
   let star = document.createElement("img");
   star.setAttribute("src", "./img/star.svg");
   star.style.position = "absolute";
+
+  //make stars clickable
+  star.addEventListener("click", function() {
+    clickSound[getNumber(10 + 1) + 1].play();
+  })
+
+  //add audio to star clicks
   star.addEventListener("click", function() {
     removeStar();
     stars += 1
     INIT.displayStarCount();
   })
+
+  //append star
   center.appendChild(star);
 
   //generate new animation
@@ -143,3 +166,9 @@ function Options(durationParam) {
 
 //game start
 setTimeout(startGame, getNumber(5000 + 1) + 1000)
+
+
+/* TASKS */
+//fix audio lag
+//fade out audio for less abrupt transitions
+//it sometimes doesn't play the audio
