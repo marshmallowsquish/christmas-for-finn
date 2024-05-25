@@ -1,4 +1,4 @@
-/* DECLARE VARIABLES - selectors, define audio, working values */
+/* DECLARE VARIABLES - selectors, define audio, define colors, working values */
 
 //selectors
 const backButton = document.getElementById("back-button");
@@ -7,6 +7,7 @@ const themesContainer = document.getElementById("themes");
 const bottomContainer = document.getElementById("bottom");
 const starCountDisplay = document.getElementById("stars");
 const center = document.getElementById("center");
+const svgStar = document.getElementById("star");
 
 //define audio
 const clickSound = {
@@ -22,8 +23,17 @@ const clickSound = {
   10: new Audio("./audio/10_mattwer3-freesounds.wav")
 }
 
+//define colors
+const colorList = [
+  { name: "red", hex: "#FF0000" },
+  { name: "yellow", hex: "#FFFF00" },
+  { name: "green", hex: "#00FF00" },
+  { name: "blue", hex: "#0000FF" }
+]
+
 //working values
 let stars = 0;
+let color = "#FFFFFF"
 
 /* DECLARE FUNCTIONS */
 function startGame() {
@@ -33,13 +43,13 @@ function startGame() {
 
 function displayStar() {
   //create star
-  let star = document.createElement("img");
-  star.setAttribute("src", "./img/star.svg");
+  let star = svgStar.cloneNode(true);
+  star.classList.remove("hidden");
   star.style.position = "absolute";
 
   //make stars clickable
   star.addEventListener("click", function() {
-    clickSound[getNumber(10 + 1) + 1].play();
+    clickSound[getNumber(10) + 1].play();
   })
 
   //add audio to star clicks
@@ -88,6 +98,16 @@ function getRotate() {
   } else {
     return `rotate(${getPosOrNeg()}${getNumber(360 + 1)}deg)`;
   }
+}
+
+function getColor() {
+  let number = getNumber(1);
+
+  if (number === 0) {
+    color = `${colorList[getNumber(4)].hex}`;
+  } 
+
+  return color;
 }
 
 function getXAxis() {
@@ -149,12 +169,12 @@ const centerDimensions = document.getElementById("center").getBoundingClientRect
 //animation constructors
 function FirstKeyframe() {
   this.transform =  `scale(0.${getNumber(9 + 1)}1) translateX(${getXAxis()}) translateY(${getYAxis()})`;
-  this.fill = "#FFFFFF";
+  this.fill = `${getColor()}`;
 }
 
 function SecondKeyframe() {
   this.transform =  `${getRotate()} scale(0.${getNumber(9 + 1)}) translateX(${getXAxis()}) translateY(${getYAxis()})`;
-  this.fill = "#FFFFFF";
+  this.fill = `${getColor()}`;
 }
 
 function Options(durationParam) {

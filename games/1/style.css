@@ -17,6 +17,7 @@ body {
 #left,
 #right {
   height: 100%;
+  z-index: 2;
 }
 
 #center {
@@ -60,7 +61,6 @@ body {
   aspect-ratio: 1;
   border: 4px outset hsl(240, 70%, 30%);
   position: relative;
-  z-index: 2;
   display: block;
 }
 
@@ -80,4 +80,8 @@ body {
   border: 4px outset hsl(240, 70%, 30%);
   position: relative;
   z-index: 2;
+}
+
+.hidden {
+  display: none;
 }
