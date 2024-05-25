@@ -38,7 +38,7 @@ let color = "#FFFFFF"
 /* DECLARE FUNCTIONS */
 function startGame() {
   displayStar();
-  setTimeout(startGame, getNumber(5000 + 1) + 1000)
+  setTimeout(startGame, GET.number(5000 + 1) + 1000)
 }
 
 function displayStar() {
@@ -49,7 +49,7 @@ function displayStar() {
 
   //make stars clickable
   star.addEventListener("click", function() {
-    clickSound[getNumber(10) + 1].play();
+    clickSound[GET.number(10) + 1].play();
   })
 
   //add audio to star clicks
@@ -63,7 +63,7 @@ function displayStar() {
   center.appendChild(star);
 
   //generate new animation
-  let durationParam = getNumber(6000 + 1) + 1000;
+  let durationParam = GET.number(6000 + 1) + 1000;
   let starAnimation = new Array(new FirstKeyframe, new SecondKeyframe);
   let starOptions = new Options(durationParam);
 
@@ -74,48 +74,6 @@ function displayStar() {
   function removeStar() {
     star.remove()
   }
-}
-
-function getNumber(num) {
-  return Math.floor(Math.random() * num);
-}
-
-function getPosOrNeg() {
-  let number = getNumber(2)
-
-  if (number === 0) {
-    return "-";
-  } else {
-    return "+";
-  }
-}
-
-function getRotate() {
-  let number = getNumber(2)
-
-  if (number === 0) {
-    return "";
-  } else {
-    return `rotate(${getPosOrNeg()}${getNumber(360 + 1)}deg)`;
-  }
-}
-
-function getColor() {
-  let number = getNumber(1);
-
-  if (number === 0) {
-    color = `${colorList[getNumber(4)].hex}`;
-  } 
-
-  return color;
-}
-
-function getXAxis() {
-  return `${getPosOrNeg()}${getNumber((centerDimensions.width / 2) + 1)}px`
-}
-
-function getYAxis() {
-  return `${getPosOrNeg()}${getNumber((centerDimensions.height / 2) + 1)}px`
 }
 
 
@@ -157,6 +115,45 @@ const INIT = {
   }
 }
 
+const GET = {
+  number: function(num) {
+    return Math.floor(Math.random() * num);
+  },
+  posOrNeg: function() {
+    let number = GET.number(2)
+
+    if (number === 0) {
+      return "-";
+    } else {
+      return "+";
+    }
+  },
+  rotate: function() {
+    let number = GET.number(2)
+  
+    if (number === 0) {
+      return "";
+    } else {
+      return `rotate(${GET.posOrNeg()}${GET.number(360 + 1)}deg)`;
+    }
+  },
+  hex: function() {
+    let number = GET.number(1);
+  
+    if (number === 0) {
+      color = `${colorList[GET.number(4)].hex}`;
+    } 
+  
+    return color;
+  },
+  xAxis: function() {
+    return `${GET.posOrNeg()}${GET.number((centerDimensions.width / 2) + 1)}px`
+  },
+  yAxis: function() {
+    return `${GET.posOrNeg()}${GET.number((centerDimensions.height / 2) + 1)}px`
+  }
+}
+
 /* SCRIPT */
 INIT.createSoundButtons();
 INIT.createThemeButtons();
@@ -168,24 +165,24 @@ const centerDimensions = document.getElementById("center").getBoundingClientRect
 
 //animation constructors
 function FirstKeyframe() {
-  this.transform =  `scale(0.${getNumber(9 + 1)}1) translateX(${getXAxis()}) translateY(${getYAxis()})`;
-  this.fill = `${getColor()}`;
+  this.transform =  `scale(0.${GET.number(9 + 1)}1) translateX(${GET.xAxis()}) translateY(${GET.yAxis()})`;
+  this.fill = `${GET.hex()}`;
 }
 
 function SecondKeyframe() {
-  this.transform =  `${getRotate()} scale(0.${getNumber(9 + 1)}) translateX(${getXAxis()}) translateY(${getYAxis()})`;
-  this.fill = `${getColor()}`;
+  this.transform =  `${GET.rotate()} scale(0.${GET.number(9 + 1)}) translateX(${GET.xAxis()}) translateY(${GET.yAxis()})`;
+  this.fill = `${GET.hex()}`;
 }
 
 function Options(durationParam) {
   this.duration = durationParam,
   this.iterations = 1,
-  this.easing = `cubic-bezier(0.${getNumber(99 + 1)}, 0.${getNumber(99 + 1)}, 0.${getNumber(99 + 1)}, 0.${getNumber(99 + 1)})`,
+  this.easing = `cubic-bezier(0.${GET.number(99 + 1)}, 0.${GET.number(99 + 1)}, 0.${GET.number(99 + 1)}, 0.${GET.number(99 + 1)})`,
   this.fill = "both";
 }
 
 //game start
-setTimeout(startGame, getNumber(5000 + 1) + 1000)
+setTimeout(startGame, GET.number(5000 + 1) + 1000)
 
 
 /* TASKS */
