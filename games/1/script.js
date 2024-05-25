@@ -77,15 +77,14 @@ function displayStar() {
 }
 
 
-/* DECLARE EVENT HANDLERS */
-backButton.addEventListener("click", function() {
-  window.location.href = "./../../index.html";
-})
-
-
 /* DECLARE NAMESPACES */
 
 const INIT = {
+  declareEventHandlers: function() {
+    backButton.addEventListener("click", function() {
+      window.location.href = "./../../index.html";
+    })
+  },
   createSoundButtons: function() {
     for (let i = 0; i < 4; i++) {
       let button = document.createElement("img");
@@ -155,6 +154,7 @@ const GET = {
 }
 
 /* SCRIPT */
+INIT.declareEventHandlers();
 INIT.createSoundButtons();
 INIT.createThemeButtons();
 INIT.createSongButtons();
