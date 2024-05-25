@@ -36,6 +36,10 @@ const colorList = [
 //working values
 let stars = 0;
 let color = "#FFFFFF"
+let red = false;
+let yellow = false;
+let green = false;
+let blue = false;
 
 /* DECLARE FUNCTIONS */
 function startGame() {
@@ -51,11 +55,40 @@ function displayStar() {
   STAR.declareEventHandlers(star);
 }
 
-
-
 function incrementStars() {
   stars += 1
   INIT.displayStarCount();
+}
+
+function handleNewColor() {
+  switch (color) {
+    case "#FFFFFF":
+      break;
+    case "#FF0000":
+      if (!red) {
+        colorSound.play();
+        red = true;
+      }
+      break;
+    case "#FFFF00":
+      if (!yellow) {
+        colorSound.play();
+        yellow = true;
+      }
+      break;
+    case "#00FF00":
+      if (!green) {
+        colorSound.play();
+        green = true;
+      }
+      break;
+    case "#0000FF":
+      if (!blue) {
+        colorSound.play();
+        blue = true;
+      }
+      break;
+  }
 }
 
 
@@ -119,7 +152,7 @@ const GET = {
     }
   },
   hex: function() {
-    let number = GET.number(10);
+    let number = GET.number(2);
   
     if (number === 0) {
       color = `${colorList[GET.number(4)].hex}`;
@@ -156,6 +189,7 @@ const STAR = {
   declareEventHandlers: function(star) {
     //make stars clickable
     star.addEventListener("click", function() {
+      handleNewColor();
       star.remove()
       incrementStars();
     })
@@ -164,9 +198,7 @@ const STAR = {
     star.addEventListener("click", function() {
       if (color === "#FFFFFF") {
         clickSound[GET.number(10) + 1].play();
-      } else {
-        colorSound.play();
-      }
+      } 
     })
   }
 }
