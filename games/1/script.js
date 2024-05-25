@@ -44,27 +44,34 @@ function startGame() {
 }
 
 function displayStar() {
-  //create star
+  //create and append star
   let star = svgStar.cloneNode(true);
   star.classList.remove("hidden");
   star.style.position = "absolute";
-
-  //make stars clickable
-  star.addEventListener("click", function() {
-    removeStar();
-    stars += 1
-    INIT.displayStarCount();
-  })
-
-  //append star
   center.appendChild(star);
 
   //generate new animation
   let durationParam = GET.number(6000 + 1) + 1000;
   let starAnimation = new Array(new FirstKeyframe, new SecondKeyframe);
   let starOptions = new Options(durationParam);
-
   star.animate(starAnimation, starOptions);
+
+  addEventListenersToStar(star);
+  
+  //remove star at end of animation
+  setTimeout(removeStar, durationParam);
+
+  function removeStar() {
+    star.remove()
+  }
+}
+
+function addEventListenersToStar(star) {
+  //make stars clickable
+  star.addEventListener("click", function() {
+    star.remove()
+    incrementStars();
+  })
 
   //add audio to star clicks
   star.addEventListener("click", function() {
@@ -74,12 +81,11 @@ function displayStar() {
       colorSound.play();
     }
   })
-  
-  //remove star at end of animation
-  setTimeout(removeStar, durationParam);
-  function removeStar() {
-    star.remove()
-  }
+}
+
+function incrementStars() {
+  stars += 1
+  INIT.displayStarCount();
 }
 
 
