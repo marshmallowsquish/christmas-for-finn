@@ -56,6 +56,10 @@ body {
   height: 85%;
 }
 
+#themes img {
+  background-color: hsl(240, 70%, 40%);
+}
+
 .top-buttons {
   height: 25%;
   aspect-ratio: 1;

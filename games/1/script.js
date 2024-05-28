@@ -36,10 +36,10 @@ const colorList = [
 //working values
 let stars = 0;
 let color = "#FFFFFF"
-let red = false;
 let yellow = false;
-let green = false;
+let red = false;
 let blue = false;
+let green = false;
 
 /* DECLARE FUNCTIONS */
 function startGame() {
@@ -64,28 +64,40 @@ function handleNewColor() {
   switch (color) {
     case "#FFFFFF":
       break;
+    case "#FFFF00":
+    if (!yellow) {
+      colorSound.play();
+      yellow = true;
+      themesContainer.children[0].setAttribute("src", "./img/yellow-star.svg");
+    } else {
+      clickSound[GET.number(10) + 1].play();
+    }
+    break;
     case "#FF0000":
       if (!red) {
         colorSound.play();
         red = true;
-      }
-      break;
-    case "#FFFF00":
-      if (!yellow) {
-        colorSound.play();
-        yellow = true;
-      }
-      break;
-    case "#00FF00":
-      if (!green) {
-        colorSound.play();
-        green = true;
+        themesContainer.children[1].setAttribute("src", "./img/red-star.svg");
+      } else {
+        clickSound[GET.number(10) + 1].play();
       }
       break;
     case "#0000FF":
       if (!blue) {
         colorSound.play();
         blue = true;
+        themesContainer.children[2].setAttribute("src", "./img/blue-star.svg");
+      } else {
+        clickSound[GET.number(10) + 1].play();
+      }
+      break;
+    case "#00FF00":
+      if (!green) {
+        colorSound.play();
+        green = true;
+        themesContainer.children[3].setAttribute("src", "./img/green-star.svg");
+      } else {
+        clickSound[GET.number(10) + 1].play();
       }
       break;
   }
@@ -241,6 +253,7 @@ setTimeout(startGame, GET.number(5000 + 1) + 1000)
 //it sometimes doesn't play the audio
 
 /* FEATURES */
+//add image to color button on click
 //sound buttons double as sky changers
 //boing sound for changing star color
 //songs add temporary effect for duration of song, or until click off. one is to change color hue. for this, simply have BOTH keyframes getHex with certainty.
