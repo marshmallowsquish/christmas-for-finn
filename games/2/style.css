@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-#cover-selection {
+#cover-screen {
   height: 100vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
