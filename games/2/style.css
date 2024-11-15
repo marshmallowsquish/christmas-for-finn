@@ -3,3 +3,19 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+#cover-selection {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+  #closed-book-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+.inactive {
+  display: none;
+}
