@@ -14,10 +14,17 @@ const SELECTION_SCREENS = {
 
     return choice[param];
   },
-  toggleActivationStatus: function(param) {
-    let screen = this.getSelection(param);
-
-    screen.classList.toggle("inactive");
+  activateScreen: function(param) {
+    let coverScreen = this.getSelection("cover");
+    let pageScreen = this.getSelection("page");
+    console.log(param);
+    
+    if (param === "cover") {
+      pageScreen.classList.toggle("inactive");
+    } else {
+      coverScreen.classList.toggle("inactive");
+      pageScreen.classList.toggle("inactive");
+    }
   },
 }
 
@@ -51,7 +58,7 @@ const COVER_OPTIONS_MENU = {
     this.getSelection("button").addEventListener("click", changePage);
 
     function changePage() {
-      COVER_OPTIONS_MENU.colorPage ? COVER_OPTIONS_MENU.displayPage("animal") : console.log("hi");
+      COVER_OPTIONS_MENU.colorPage ? COVER_OPTIONS_MENU.displayPage("animal") : SELECTION_SCREENS.activateScreen("page");
       COVER_OPTIONS_MENU.colorPage = false;
     }
 
@@ -114,7 +121,7 @@ const COVER_OPTIONS_MENU = {
   },
 }
 
-SELECTION_SCREENS.toggleActivationStatus("page"); //de-activates the "page" screen, so that we start with the "cover" screen
+SELECTION_SCREENS.activateScreen("cover"); 
 COVER_OPTIONS_MENU.createGrid();
 COVER_OPTIONS_MENU.addButtonFunctionality();
 COVER_OPTIONS_MENU.displayPage("color");

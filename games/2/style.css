@@ -94,7 +94,7 @@
   }
 
 .inactive {
-  display: none;
+  display: none !important;
 }
 
 .pink {
