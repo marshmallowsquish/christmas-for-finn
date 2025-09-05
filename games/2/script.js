@@ -22,6 +22,7 @@ const SELECTION_SCREENS = {
 }
 
 const COVER_OPTIONS_MENU = {
+  colorPage: true,
   getSelection: function(param) {
     let choice = {
       h2: document.getElementById("cover-options-message"),
@@ -44,6 +45,19 @@ const COVER_OPTIONS_MENU = {
       button.appendChild(image);
     }
   },
+  addButtonFunctionality: function() {
+    this.getSelection("button").addEventListener("click", changePage);
+
+    function changePage() {
+      COVER_OPTIONS_MENU.colorPage ? COVER_OPTIONS_MENU.displayPage("animal") : console.log("hi");
+      COVER_OPTIONS_MENU.colorPage = false;
+    }
+  },
+  displayPage: function(param) {
+    this.displayMessage(param);
+    this.displayOptions(param);
+    this.displayButtonText(param);
+  },
   displayMessage: function(param) {
     let choice = {
       color: "What color will the book be?",
@@ -55,7 +69,7 @@ const COVER_OPTIONS_MENU = {
   displayOptions: function(param) {
     let choice = {
       color: ["pink", "red", "orange", "yellow", "green", "blue", "indigo", "purple", "white", "grey", "black", "brown"],
-      animal: "test",
+      animal: ["cat", "dog", "fish", "hedgehog", "chicken", "guinea", "bee", "spider", "turtle", "raccoon", "donkey", "deer"],
     }
 
     let options = this.getSelection("div").children;
@@ -80,6 +94,5 @@ const COVER_OPTIONS_MENU = {
 
 SELECTION_SCREENS.toggleActivationStatus("page"); //de-activates the "page" screen, so that we start with the "cover" screen
 COVER_OPTIONS_MENU.createGrid();
-COVER_OPTIONS_MENU.displayMessage("color");
-COVER_OPTIONS_MENU.displayOptions("color");
-COVER_OPTIONS_MENU.displayButtonText("color");
+COVER_OPTIONS_MENU.addButtonFunctionality();
+COVER_OPTIONS_MENU.displayPage("color");

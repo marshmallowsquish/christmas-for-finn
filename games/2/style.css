@@ -46,6 +46,19 @@
     align-items: center;
   }
 
+  #cover-options button {
+    width: 8rem;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #cover-options img {
+    height: 4rem;
+    width: auto;
+  }
+
   #cover-options-proceed-button {
     font-size: 2rem;
     padding: 1rem;
