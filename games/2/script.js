@@ -46,11 +46,33 @@ const COVER_OPTIONS_MENU = {
     }
   },
   addButtonFunctionality: function() {
+
+    //adds functionality to proceed button 
     this.getSelection("button").addEventListener("click", changePage);
 
     function changePage() {
       COVER_OPTIONS_MENU.colorPage ? COVER_OPTIONS_MENU.displayPage("animal") : console.log("hi");
       COVER_OPTIONS_MENU.colorPage = false;
+    }
+
+    //adds functionality to options buttons
+
+    let options = this.getSelection("div").children;
+    let book = document.getElementById("closed-book-container").firstElementChild;
+
+    for (let i = 0; i < 12; i++) {
+      options[i].lastElementChild.addEventListener("click", changeImage); 
+    }
+
+    function changeImage() {
+      let selection = this.parentElement.firstElementChild.textContent;
+
+      if (COVER_OPTIONS_MENU.colorPage) {
+        book.setAttribute("class", selection);
+      } else {
+        let animal = document.getElementById("cover-animal-image");
+        animal.setAttribute("src", `./img/cover/${selection}.png`)
+      }
     }
   },
   displayPage: function(param) {

@@ -6,7 +6,7 @@
 
 #cover-screen {
   height: 100vh;
-  padding: 3rem;
+  padding: 1.5rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
@@ -18,16 +18,27 @@
     align-items: center;
   }
 
+    #cover-image {
+      width: 90%;
+    }
+
+    #cover-animal-image {
+      height: auto;
+      width: 15%;
+      position: absolute;
+      z-index: 1;
+    }
+
 #cover-options-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 5rem;
+  gap: 4rem;
 }
 
   #cover-options-message {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
 
   #cover-options {
@@ -35,36 +46,99 @@
     justify-content: space-between;
     align-content: center;
     flex-wrap: wrap;
-    gap: 3rem;
+    gap: 2rem;
   }
 
   #cover-options div {
-    flex-basis: 25%;
+    flex-basis: 20%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
 
+  #cover-options h3 {
+    font-size: 2rem;
+    margin: 0.5rem;
+  }
+
   #cover-options button {
+    background-color: hsl(0, 0%, 50%);
+    height: 8rem;
     width: 8rem;
-    padding: 1rem;
+    border: 0.3rem hsl(0, 0%, 70%) groove;
+    border-radius: 25%;
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
   #cover-options img {
-    height: 4rem;
-    width: auto;
+    object-fit: cover;
+    max-height: 80%;
+    max-width: 80%;
+    border-radius: 25%;
   }
 
   #cover-options-proceed-button {
+    background: linear-gradient(90deg,rgba(156, 109, 163, 1) 0%, rgba(120, 126, 171, 1) 15%, rgba(120, 171, 165, 1) 30%, rgba(147, 186, 143, 1) 45%, rgba(181, 176, 130, 1) 60%, rgba(212, 177, 142, 1) 77%, rgba(209, 157, 157, 1) 90%, rgba(199, 157, 199, 1) 100%);
     font-size: 2rem;
     padding: 1rem;
-    border-radius: 15%;
+    border: 0.3rem outset;
+  }
+
+  #cover-options-proceed-button:hover {
+    background: linear-gradient(90deg,rgba(164, 58, 180, 1) 0%, rgba(48, 69, 173, 1) 15%, rgba(42, 196, 178, 1) 30%, rgba(55, 218, 37, 1) 45%, rgba(252, 243, 69, 1) 60%, rgba(252, 154, 52, 1) 75%, rgba(253, 39, 39, 1) 90%, rgba(253, 29, 253, 1) 100%);
   }
 
 .inactive {
   display: none;
+}
+
+.pink {
+  filter: saturate(75%) hue-rotate(315deg) contrast(100%) brightness(2.5);
+}
+
+.red {
+  filter: saturate(100%) hue-rotate(355deg) contrast(130%) brightness(0.9);
+}
+
+.orange {
+  filter: saturate(150%) hue-rotate(45deg) contrast(130%) brightness(1.5);
+}
+
+.yellow {
+  filter: saturate(150%) hue-rotate(55deg) contrast(130%) brightness(2.5);
+}
+
+.green {
+  filter: saturate(100%) hue-rotate(85deg) contrast(130%) brightness(1.2);
+}
+
+.blue {
+  filter: saturate(100%) hue-rotate(200deg) contrast(130%) brightness(1.2);
+}
+
+.indigo {
+  filter: saturate(100%) hue-rotate(250deg) contrast(100%) brightness(0.9);
+}
+
+.purple {
+  filter: saturate(100%) hue-rotate(280deg) contrast(100%) brightness(1);
+}
+
+.white {
+  filter: saturate(0%) hue-rotate(0deg) contrast(150%) brightness(2.8);
+}
+
+.grey {
+  filter: saturate(0%) hue-rotate(0deg) contrast(130%) brightness(1.5);
+}
+
+.black {
+  filter: saturate(0%) hue-rotate(0deg) contrast(200%) brightness(0.5);
+}
+
+.brown {
+  filter: saturate(60%) hue-rotate(30deg) contrast(100%) brightness(1);
 }
