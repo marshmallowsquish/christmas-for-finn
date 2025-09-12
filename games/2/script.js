@@ -123,12 +123,12 @@ const COVER_OPTIONS_MENU = {
 }
 
 const PAGE_OPTIONS_MENU = {
-  weather: "clear, bright",
-  time: "morning",
-  setting: "jungle",
+  weather: ["bright, clear", "cloudy, grey", "cold, rainy", "dark, stormy"],
+  time: ["morning", "afternoon", "evening", "night"],
+  setting: ["city", "countryside", "jungle", "desert"],
   animal: "bee",
-  destination: "movie theater",
-  item: "flowers",
+  destination: ["park", "pool", "library", "movie theater"],
+  item: ["flowers", "rocks", "bugs", "birds"],
   initialize: function() {
     PAGE_OPTIONS_MENU.addButtonFunctionality();
     PAGE_OPTIONS_MENU.updateAnimal();
