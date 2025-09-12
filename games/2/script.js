@@ -17,13 +17,13 @@ const SELECTION_SCREENS = {
   activateScreen: function(param) {
     let coverScreen = this.getSelection("cover");
     let pageScreen = this.getSelection("page");
-    console.log(param);
     
     if (param === "cover") {
       pageScreen.classList.toggle("inactive");
     } else {
       coverScreen.classList.toggle("inactive");
       pageScreen.classList.toggle("inactive");
+      PAGE_OPTIONS_MENU.initialize();
     }
   },
 }
@@ -77,8 +77,9 @@ const COVER_OPTIONS_MENU = {
       if (COVER_OPTIONS_MENU.colorPage) {
         book.setAttribute("class", selection);
       } else {
-        let animal = document.getElementById("cover-animal-image");
-        animal.setAttribute("src", `./img/cover/${selection}.png`)
+        let animalImage = document.getElementById("cover-animal-image");
+        animalImage.setAttribute("src", `./img/cover/${selection}.png`);
+        PAGE_OPTIONS_MENU.animal = `${selection}`;
       }
     }
   },
@@ -119,6 +120,33 @@ const COVER_OPTIONS_MENU = {
 
     this.getSelection("button").textContent = choice[param];
   },
+}
+
+const PAGE_OPTIONS_MENU = {
+  weather: "clear, bright",
+  time: "morning",
+  setting: "jungle",
+  animal: "bee",
+  destination: "movie theater",
+  item: "flowers",
+  initialize: function() {
+    PAGE_OPTIONS_MENU.addButtonFunctionality();
+    PAGE_OPTIONS_MENU.updateAnimal();
+  },
+  updateAnimal: function() {
+    let animalSpan = document.getElementById("story-animal");
+    animalSpan.textContent = PAGE_OPTIONS_MENU.animal;
+  },
+  addButtonFunctionality: function() {
+    let storyButtons = document.getElementsByClassName("story-button");
+    for (let i = 0; i < storyButtons.length; i++) {
+      storyButtons[i].addEventListener("click", PAGE_OPTIONS_MENU.displayStoryOptions);
+    }
+  },
+  displayStoryOptions: function() {
+    let selectedButton = this.getAttribute("id").split("-");
+    console.log(PAGE_OPTIONS_MENU[selectedButton[1]]);
+  }
 }
 
 SELECTION_SCREENS.activateScreen("cover"); 
