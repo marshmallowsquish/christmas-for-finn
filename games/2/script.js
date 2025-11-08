@@ -99,7 +99,7 @@ const COVER_OPTIONS_MENU = {
   displayOptions: function(param) {
     let choice = {
       color: ["pink", "red", "orange", "yellow", "green", "blue", "indigo", "purple", "white", "grey", "black", "brown"],
-      animal: ["cat", "dog", "fish", "hedgehog", "chicken", "guinea", "bee", "spider", "turtle", "raccoon", "donkey", "deer"],
+      animal: ["Cat", "Dog", "Fish", "Hedgehog", "Chicken", "Guinea", "Bee", "Spider", "Turtle", "Raccoon", "Donkey", "Deer"],
     }
 
     let options = this.getSelection("div").children;
