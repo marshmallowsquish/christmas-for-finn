@@ -160,3 +160,4 @@ SELECTION_SCREENS.activateScreen("cover");
 COVER_OPTIONS_MENU.createGrid();
 COVER_OPTIONS_MENU.addButtonFunctionality();
 COVER_OPTIONS_MENU.displayPage("color");
+SELECTION_SCREENS.activateScreen("page"); //delete later; for trouble-shooting
