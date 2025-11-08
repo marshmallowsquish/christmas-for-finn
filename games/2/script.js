@@ -1,10 +1,3 @@
-//pink, red, orange, yellow, green, blue, indigo, purple, white, grey, black, brown
-//fish, hedgehog, cat, dog, bee, chicken, guinea, donkey, spider, turtle, raccoon, deer
-
-//init: add "inactive" class to page selector
-//init: call cover selector
-//insert proper heading. create 'grid' function (contains h3 for Japanese name, and button). insert button with proper title and functionality.
-
 const SELECTION_SCREENS = {
   getSelection: function(param) {
     let choice = {
@@ -65,7 +58,19 @@ const COVER_OPTIONS_MENU = {
     this.getSelection("button").addEventListener("click", changePage);
 
     function changePage() {
-      COVER_OPTIONS_MENU.colorPage ? COVER_OPTIONS_MENU.displayPage("animal") : SELECTION_SCREENS.activateScreen("page");
+      if (COVER_OPTIONS_MENU.colorPage) {
+        COVER_OPTIONS_MENU.displayPage("animal")
+      } else {
+        let bookColor = document.getElementById("cover-image").classList
+        let bookBorder = document.getElementsByClassName("book-border");
+      
+        for (let i = 0; i < 4; i++) {
+          bookBorder[i].classList.add(bookColor);
+        }
+
+        SELECTION_SCREENS.activateScreen("page");
+      }
+
       COVER_OPTIONS_MENU.colorPage = false;
     }
 
@@ -181,4 +186,3 @@ SELECTION_SCREENS.activateScreen("cover");
 COVER_OPTIONS_MENU.createGrid();
 COVER_OPTIONS_MENU.addButtonFunctionality();
 COVER_OPTIONS_MENU.displayPage("color");
-SELECTION_SCREENS.activateScreen("page"); //delete later; for trouble-shooting

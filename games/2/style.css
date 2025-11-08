@@ -108,13 +108,46 @@
   }
 
 #page-screen {
-  padding: 6rem;
+  padding: 9rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 6rem;
 }
+
+  #top-border,
+  #bottom-border,
+  #right-border,
+  #left-border {
+    background-color: black;
+    position: fixed;
+    z-index: -1;
+  }
+
+  #top-border {
+    min-height: 4rem;
+    min-width: 100vw;
+    top: 0;
+  }
+
+  #bottom-border {
+    min-height: 4rem;
+    min-width: 100vw;
+    bottom: 0;
+  }
+
+  #right-border {
+    min-height: 200vh;
+    min-width: 6rem;
+    right: 0;
+  }
+
+  #left-border {
+    min-height: 200vh;
+    min-width: 6rem;
+    left: 0;
+  }
 
   #story-container p {
     font-size: 2.5rem;
