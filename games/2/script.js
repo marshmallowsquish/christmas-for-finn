@@ -54,6 +54,13 @@ const COVER_OPTIONS_MENU = {
   },
   addButtonFunctionality: function() {
 
+    //adds functionality to back button
+    let backButton = document.getElementById("back-button");
+
+    backButton.addEventListener("click", function() {
+      window.location.href = "./../../index.html";
+    });
+
     //adds functionality to proceed button 
     this.getSelection("button").addEventListener("click", changePage);
 

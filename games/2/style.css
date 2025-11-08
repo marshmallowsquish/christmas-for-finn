@@ -4,6 +4,18 @@
   box-sizing: border-box;
 }
 
+#back-button {
+  background-color: hsl(120, 50%, 55%);
+  height: 4rem;
+  width: 6rem;
+  border: 4px outset hsl(120, 50%, 75%);
+  position: absolute;
+}
+
+#back-button img {
+  height: 3rem;
+}
+
 #cover-screen {
   height: 100vh;
   padding: 1.5rem;
