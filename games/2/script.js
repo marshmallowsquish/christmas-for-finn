@@ -134,7 +134,7 @@ const PAGE_OPTIONS_MENU = {
   time: ["morning", "afternoon", "evening", "night"],
   setting: ["city", "countryside", "jungle", "desert"],
   animal: "bee",
-  destination: ["park", "pool", "library", "movie theater"],
+  destination: ["park", "pool", "library", "movies"],
   item: ["flowers", "rocks", "bugs", "birds"],
   initialize: function() {
     PAGE_OPTIONS_MENU.addButtonFunctionality();
@@ -152,7 +152,28 @@ const PAGE_OPTIONS_MENU = {
   },
   displayStoryOptions: function() {
     let selectedButton = this.getAttribute("id").split("-");
-    console.log(PAGE_OPTIONS_MENU[selectedButton[1]]);
+    let pageOptionsContainer = document.getElementById("page-options-container");
+
+    if (pageOptionsContainer.firstChild) {
+      for (let i = 0; i < 4; i++) {
+        pageOptionsContainer.removeChild(pageOptionsContainer.firstChild);
+      }
+    }
+
+    for (let i = 0; i < 4; i++) {
+      let box = document.createElement("div");
+      let name = document.createElement("h3");
+      let button = document.createElement("button");
+      let image = document.createElement("img");
+
+      name.textContent = PAGE_OPTIONS_MENU[selectedButton[1]][i];
+      image.src = `./img/page/${PAGE_OPTIONS_MENU[selectedButton[1]][i]}.png`
+    
+      pageOptionsContainer.appendChild(box);
+      box.appendChild(name);
+      box.appendChild(button);
+      button.appendChild(image);
+    }
   }
 }
 
