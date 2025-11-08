@@ -107,18 +107,42 @@
     background: linear-gradient(90deg,rgba(164, 58, 180, 1) 0%, rgba(48, 69, 173, 1) 15%, rgba(42, 196, 178, 1) 30%, rgba(55, 218, 37, 1) 45%, rgba(252, 243, 69, 1) 60%, rgba(252, 154, 52, 1) 75%, rgba(253, 39, 39, 1) 90%, rgba(253, 29, 253, 1) 100%);
   }
 
-#story-container p {
-  font-size: 2.5rem;
-  margin: 6rem;
+#page-screen {
+  padding: 6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6rem;
 }
 
-.story-button {
-  font-size: 2.5rem;
-}
+  #story-container p {
+    font-size: 2.5rem;
+  }
 
-#page-options-container img {
-  height: 6rem;
-}
+  .story-button {
+    font-size: 2.5rem;
+  }
+
+  #page-options-container {
+    display: flex;
+    gap: 3rem;
+  }
+
+  #page-options-container div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #page-options-container h3 {
+    font-size: 2rem;
+  }
+
+  #page-options-container img {
+    height: 8rem;
+  }
 
 .inactive {
   display: none !important;
