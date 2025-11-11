@@ -172,7 +172,9 @@ const PAGE_OPTIONS_MENU = {
       let image = document.createElement("img");
 
       name.textContent = PAGE_OPTIONS_MENU[selectedButton[1]][i];
-      image.src = `./img/page/${PAGE_OPTIONS_MENU[selectedButton[1]][i]}.png`
+
+      let optionFileName = PAGE_OPTIONS_MENU[selectedButton[1]][i].split(", ").join("-");
+      image.src = `./img/page/${optionFileName}.png`
     
       pageOptionsContainer.appendChild(box);
       box.appendChild(name);
