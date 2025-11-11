@@ -156,7 +156,8 @@ const PAGE_OPTIONS_MENU = {
     }
   },
   displayStoryOptions: function() {
-    let selectedButton = this.getAttribute("id").split("-");
+    let selectedButton = this;
+    let selectedButtonName = this.getAttribute("id").split("-");
     let pageOptionsContainer = document.getElementById("page-options-container");
 
     if (pageOptionsContainer.firstChild) {
@@ -166,15 +167,20 @@ const PAGE_OPTIONS_MENU = {
     }
 
     for (let i = 0; i < 4; i++) {
+      let optionName = PAGE_OPTIONS_MENU[selectedButtonName[1]][i];
+      let optionFileName = optionName.split(", ").join("-");
+
       let box = document.createElement("div");
       let name = document.createElement("h3");
       let button = document.createElement("button");
       let image = document.createElement("img");
 
-      name.textContent = PAGE_OPTIONS_MENU[selectedButton[1]][i];
-
-      let optionFileName = PAGE_OPTIONS_MENU[selectedButton[1]][i].split(", ").join("-");
+      name.textContent = optionName;
       image.src = `./img/page/${optionFileName}.png`
+
+      button.addEventListener("click", function() {
+        selectedButton.textContent = optionName;
+      })
     
       pageOptionsContainer.appendChild(box);
       box.appendChild(name);
