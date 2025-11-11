@@ -120,7 +120,7 @@
   #bottom-border,
   #right-border,
   #left-border {
-    background-color: black;
+    background-color: #f44034;
     position: fixed;
     z-index: -1;
   }
