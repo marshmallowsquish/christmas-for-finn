@@ -61,14 +61,18 @@ const COVER_OPTIONS_MENU = {
       if (COVER_OPTIONS_MENU.colorPage) {
         COVER_OPTIONS_MENU.displayPage("animal")
       } else {
-        let bookColor = document.getElementById("cover-image").classList
-        let bookBorder = document.getElementsByClassName("book-border");
-      
-        for (let i = 0; i < 4; i++) {
-          bookBorder[i].classList.add(bookColor);
+        if (PAGE_OPTIONS_MENU.animal === "Tiger") {
+          alert("Make sure to choose an animal before reading");
+        } else {
+          let bookColor = document.getElementById("cover-image").classList
+          let bookBorder = document.getElementsByClassName("book-border");
+        
+          for (let i = 0; i < 4; i++) {
+            bookBorder[i].classList.add(bookColor);
+          }
+  
+          SELECTION_SCREENS.activateScreen("page");
         }
-
-        SELECTION_SCREENS.activateScreen("page");
       }
 
       COVER_OPTIONS_MENU.colorPage = false;
@@ -138,7 +142,7 @@ const PAGE_OPTIONS_MENU = {
   weather: ["bright, clear", "cloudy, grey", "cold, rainy", "dark, stormy"],
   time: ["morning", "afternoon", "evening", "night"],
   setting: ["city", "countryside", "jungle", "desert"],
-  animal: "bee",
+  animal: "Tiger",
   destination: ["park", "pool", "library", "movies"],
   item: ["flowers", "rocks", "bugs", "birds"],
   initialize: function() {
