@@ -131,7 +131,7 @@ const COVER_OPTIONS_MENU = {
   displayButtonText: function(param) {
     let choice = {
       color: "Proceed",
-      animal: "Ready to read!",
+      animal: "Ready to write!",
     }
 
     this.getSelection("button").textContent = choice[param];
@@ -158,6 +158,11 @@ const PAGE_OPTIONS_MENU = {
     for (let i = 0; i < storyButtons.length; i++) {
       storyButtons[i].addEventListener("click", PAGE_OPTIONS_MENU.displayStoryOptions);
     }
+
+    let pageProceedButton = document.getElementById("page-options-proceed-button");
+    pageProceedButton.addEventListener("click", function() {
+      window.location.href = "./../../index.html";
+    })
   },
   displayStoryOptions: function() {
     let selectedButton = this;
