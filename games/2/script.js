@@ -139,7 +139,7 @@ const COVER_OPTIONS_MENU = {
 }
 
 const PAGE_OPTIONS_MENU = {
-  weather: ["bright, clear", "cloudy, grey", "cold, rainy", "dark, stormy"],
+  weather: ["bright, clear", "cloudy, grey", "cold, snowy", "dark, stormy"],
   time: ["morning", "afternoon", "evening", "night"],
   setting: ["city", "countryside", "jungle", "desert"],
   animal: "Tiger",
