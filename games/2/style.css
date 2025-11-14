@@ -12,6 +12,7 @@
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 2;
 }
 
 #back-button img {
@@ -110,6 +111,8 @@
   }
 
 #page-screen {
+  background-image: url("./img/page/paper-texture.png");
+  background-size: 100vw;
   height: 100vh;
   width: 100vw;
   padding: 9rem;
@@ -126,7 +129,7 @@
   #left-border {
     background-color: #f44034;
     position: fixed;
-    z-index: -1;
+    z-index: 1;
   }
 
   #top-border {
