@@ -40,6 +40,7 @@ let yellow = false;
 let red = false;
 let blue = false;
 let green = false;
+let currentThemes = [];
 
 /* DECLARE FUNCTIONS */
 function startGame() {
@@ -69,6 +70,16 @@ function handleNewColor() {
       colorSound.play();
       yellow = true;
       themesContainer.children[0].setAttribute("src", "./img/yellow-star.svg");
+
+      themesContainer.children[0].addEventListener("click", function() {
+        if (this.classList.contains("selected")) {
+          this.classList.remove("selected");
+          currentThemes.pop("yellow");
+        } else {
+          this.classList.add("selected");
+          currentThemes.push("yellow");
+        }
+      })
     } else {
       clickSound[GET.number(10) + 1].play();
     }
@@ -78,6 +89,16 @@ function handleNewColor() {
         colorSound.play();
         red = true;
         themesContainer.children[1].setAttribute("src", "./img/red-star.svg");
+
+        themesContainer.children[1].addEventListener("click", function() {
+          if (this.classList.contains("selected")) {
+            this.classList.remove("selected");
+            currentThemes.pop("red");
+          } else {
+            this.classList.add("selected");
+            currentThemes.push("red");
+          }
+        })
       } else {
         clickSound[GET.number(10) + 1].play();
       }
@@ -87,6 +108,16 @@ function handleNewColor() {
         colorSound.play();
         blue = true;
         themesContainer.children[2].setAttribute("src", "./img/blue-star.svg");
+
+        themesContainer.children[2].addEventListener("click", function() {
+          if (this.classList.contains("selected")) {
+            this.classList.remove("selected");
+            currentThemes.pop("blue");
+          } else {
+            this.classList.add("selected");
+            currentThemes.push("blue");
+          }
+        })
       } else {
         clickSound[GET.number(10) + 1].play();
       }
@@ -96,6 +127,16 @@ function handleNewColor() {
         colorSound.play();
         green = true;
         themesContainer.children[3].setAttribute("src", "./img/green-star.svg");
+
+        themesContainer.children[3].addEventListener("click", function() {
+          if (this.classList.contains("selected")) {
+            this.classList.remove("selected");
+            currentThemes.pop("green");
+          } else {
+            this.classList.add("selected");
+            currentThemes.push("green");
+          }
+        })
       } else {
         clickSound[GET.number(10) + 1].play();
       }

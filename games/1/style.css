@@ -89,3 +89,7 @@ body {
 .hidden {
   display: none;
 }
+
+#themes > .top-buttons.selected {
+  background-color: hsl(240, 70%, 60%);
+}

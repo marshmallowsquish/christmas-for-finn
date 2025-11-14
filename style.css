@@ -5,12 +5,18 @@
 }
 
 body {
-  background-color: green;
+  background-image: linear-gradient(to bottom, hsl(140, 75%, 40%), hsl(140, 75%, 30%), hsl(140, 75%, 20%));
+  height: 100vh;
   padding: 25px;
 }
 
 h1 {
-  font-size: 50px;
+  -webkit-text-stroke: 2px hsl(0, 70%, 25%);
+  background: -webkit-linear-gradient(hsl(0, 70%, 65%), hsl(0, 90%, 35%));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 5rem;
   text-align: center;
   margin-bottom: 15px;
 }
@@ -25,6 +31,8 @@ h1 {
 .ornament-box {
   height: 200px;
   width: 200px;
-  border: 2px solid black;
+  border: 6px solid hsl(140, 90%, 15%);
+  box-shadow: 10px 10px 10px hsla(140, 75%, 10%);
+  margin: -3px;
   flex: none;
 }
