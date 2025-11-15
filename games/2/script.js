@@ -161,7 +161,26 @@ const PAGE_OPTIONS_MENU = {
 
     let pageProceedButton = document.getElementById("page-options-proceed-button");
     pageProceedButton.addEventListener("click", function() {
-      window.location.href = "./../../index.html";
+      //hide page options screen
+      let storyContainer = document.getElementById("story-container");
+      let pageOptionsContainer = document.getElementById("page-options-container");
+      storyContainer.classList.add("inactive");
+      pageOptionsContainer.classList.add("inactive")
+      this.classList.add("inactive");
+
+      //change background image
+      let pageScreen = document.getElementById("page-screen");
+
+      let weather = document.getElementById("story-weather").textContent.split(", ").join("-");
+      let time = document.getElementById("story-time").textContent;
+      let location = document.getElementById("story-setting").textContent;
+
+      let chosenSetting = weather + "-" + time + "-" + location;
+      let URL1 = "url(";
+      let URL2 = `./img/game/${chosenSetting}.jpg`
+      let URL3 = ")"
+
+      pageScreen.style.backgroundImage= URL1 + URL2 + URL3;
     })
   },
   displayStoryOptions: function() {
