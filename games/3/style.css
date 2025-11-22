@@ -21,4 +21,30 @@
 
 #leaves img {
   height: 100px;
+  position: absolute;
+}
+
+#leaf-1 {
+  top: 15rem;
+  left: 5rem;
+}
+
+#leaf-2 {
+  top: 5rem;
+  left: 15rem;
+}
+
+#leaf-3 {
+  bottom: 15rem;
+  right: 5rem;
+}
+
+#leaf-4 {
+  bottom: 5rem;
+  right: 15rem;
+}
+
+#leaf-5 {
+  top: 20rem;
+  left: 20rem;
 }
