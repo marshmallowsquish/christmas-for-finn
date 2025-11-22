@@ -1,0 +1,24 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#back-button {
+  background-color: hsl(120, 50%, 55%);
+  height: 4rem;
+  width: 6rem;
+  border: 4px outset hsl(120, 50%, 75%);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+#back-button img {
+  height: 3rem;
+}
+
+#leaves img {
+  height: 100px;
+}
