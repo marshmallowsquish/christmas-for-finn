@@ -1,3 +1,15 @@
+let leaf1Audio = new Audio("./audio/leaf-1.wav");
+let leaf2Audio = new Audio("./audio/leaf-2.wav");
+let leaf3Audio = new Audio("./audio/leaf-3.wav");
+let leaf4Audio = new Audio("./audio/leaf-4.wav");
+let leaf5Audio = new Audio("./audio/leaf-5.wav");
+
+let leavesAudio = [leaf1Audio, leaf2Audio, leaf3Audio, leaf4Audio, leaf5Audio];
+
+for (let i = 0; i < leavesAudio.length; i++) {
+  leavesAudio[i].loop = true;
+}
+
 const INIT = {
   addButtonFunctionality: function() {
     //make back button functional
@@ -29,13 +41,14 @@ const INIT = {
     }
   },
   playMusic: function(leaf) {
-    /* PLAY AUDIO USING `leaf-${number}.mp3` */
+    let number = leaf.getAttribute("id").split("-")[1];
+    let index = number - 1;
+    console.log(number, index);
 
-     //the following is for testing purposes
      if (leaf.classList.contains("activated")) {
-      console.log("start audio");
+      leavesAudio[index].play();
     } else {
-      console.log("stop audio");
+      leavesAudio[index].pause();
     }
   },
   returnToCalendar: function() {
