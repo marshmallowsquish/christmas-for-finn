@@ -48,3 +48,18 @@
   top: 20rem;
   left: 20rem;
 }
+
+#sprite { 
+  position: absolute; 
+  top: 9rem; 
+  left: 15rem; 
+  width: 256px; 
+  height: 256px; 
+  background-image: url("./img/totoro-idle.png");
+  animation: sprite .6s steps(6) infinite; 
+  z-index: 1; 
+} 
+
+@keyframes sprite { 
+  100%{ background-position: -1536px 0; }; 
+}
