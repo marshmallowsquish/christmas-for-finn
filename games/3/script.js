@@ -10,6 +10,59 @@ for (let i = 0; i < leavesAudio.length; i++) {
   leavesAudio[i].loop = true;
 }
 
+//make cover screen disappear
+let coverImage = document.getElementsByClassName("cover-image");
+
+document.body.addEventListener("click", fadeLeaves);
+document.body.addEventListener("click", fadeSoot);
+
+function fadeLeaves() {
+  let element = coverImage[0];
+  let opacity = 1; 
+  let interval = setInterval(function() {
+      if (opacity > 0) {
+        opacity -= 0.02;
+        element.style.opacity = opacity;
+      } else {
+        clearInterval(interval); 
+        element.style.display = "none";
+      }
+  }, 50);
+}
+
+function fadeSoot() {
+  let element = coverImage[1];
+  let opacity = 1; 
+  let interval = setInterval(function() {
+      if (opacity > 0) {
+        opacity -= 0.05;
+        element.style.opacity = opacity;
+      } else {
+        clearInterval(interval); 
+        element.style.display = "none";
+      }
+  }, 20);
+}
+
+//play rain sound
+let rainAudio = new Audio("./audio/rain.wav");
+rainAudio.loop = true;
+document.body.addEventListener("click", function() {
+  rainAudio.play()
+});
+
+//animate rain
+let counter = 100;
+for (let i = 0; i < counter; i++) {
+  let hrElement = document.createElement("HR");
+  
+    hrElement.style.left = Math.floor(Math.random() * window.innerWidth) + "px";
+    hrElement.style.animationDuration = 0.2 + Math.random() * 0.3 + "s";
+    hrElement.style.animationDelay = Math.random() * 5 + "s";
+ 
+  document.body.appendChild(hrElement);
+}
+
 const INIT = {
   addButtonFunctionality: function() {
     //make back button functional
