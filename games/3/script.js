@@ -1,3 +1,5 @@
+/* CHANGE RAIN AUDIO - it should be on google drive; changes it to a 30m loop */
+
 let leaf1Audio = new Audio("./audio/leaf-1.wav");
 let leaf2Audio = new Audio("./audio/leaf-2.wav");
 let leaf3Audio = new Audio("./audio/leaf-3.wav");
@@ -45,7 +47,7 @@ function fadeSoot() {
 }
 
 //play rain sound
-let rainAudio = new Audio("./audio/rain.wav");
+let rainAudio = new Audio("./audio/rain.mp3");
 rainAudio.loop = true;
 document.body.addEventListener("click", function() {
   rainAudio.play()
@@ -84,13 +86,14 @@ const INIT = {
     }
   },
   animateLeaf: function(leaf) {
-    /* ANIMATE LEAF somehow */
+    let totoro = document.body.getElementsByClassName("totoro");
+    let number = leaf.getAttribute("id").split("-")[1];
+    let index = number - 1;
 
-    //the following is for testing purposes
     if (leaf.classList.contains("activated")) {
-      console.log("start animation");
+      totoro[index].classList.remove("hidden");
     } else {
-      console.log("stop animation");
+      totoro[index].classList.add("hidden");
     }
   },
   playMusic: function(leaf) {
