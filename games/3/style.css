@@ -93,10 +93,11 @@ hr {
 #totoro-3,
 #totoro-4,
 #totoro-5 {
+  background-image: url("./img/totoro-sprite-2.png");
   position: absolute; 
-  width: 256px; 
-  height: 256px; 
-  animation: totoro .6s steps(6) infinite; 
+  width: 250px; 
+  height: 250px; 
+  animation: totoro .5s steps(5) infinite; 
   z-index: 1; 
 }
 
@@ -104,35 +105,30 @@ hr {
 #totoro-1 { 
   top: 45%;
   right: 17%;
-  background-image: url("./img/totoro-idle.png");
 } 
 
 #totoro-2 { 
   top: 15%;
   right: 35%;
-  background-image: url("./img/totoro-idle.png");
 } 
 
 #totoro-3 {
   bottom: 14%;
   right: 1%;
-  background-image: url("./img/totoro-idle.png");
 }
 
 #totoro-4 {
   bottom: 26%;
   left: 5%;
-  background-image: url("./img/totoro-idle.png");
 }
 
 #totoro-5 {
   top: 25%;
   left: 21%;
-  background-image: url("./img/totoro-idle.png");
 }
 
 @keyframes totoro { 
-  100%{ background-position: -1536px 0; }; 
+  100%{ background-position: -1253px 0; }; 
 } 
 
 .hidden {
