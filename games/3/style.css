@@ -103,13 +103,13 @@ hr {
 
 
 #totoro-1 { 
-  top: 45%;
-  right: 17%;
+  top: 46%;
+  right: 18%;
 } 
 
 #totoro-2 { 
   top: 15%;
-  right: 35%;
+  right: 36%;
 } 
 
 #totoro-3 {
@@ -119,12 +119,12 @@ hr {
 
 #totoro-4 {
   bottom: 26%;
-  left: 5%;
+  left: 6%;
 }
 
 #totoro-5 {
   top: 25%;
-  left: 21%;
+  left: 20%;
 }
 
 @keyframes totoro { 
