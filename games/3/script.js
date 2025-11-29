@@ -65,6 +65,15 @@ for (let i = 0; i < counter; i++) {
   document.body.appendChild(hrElement);
 }
 
+//prevent image dragging
+let images = document.getElementsByTagName("img");
+
+for (let i = 0; i < images.length; i++) {
+  images[i].addEventListener('dragstart', function( event ) {
+    event.preventDefault();
+  }, false);
+}
+
 const INIT = {
   addButtonFunctionality: function() {
     //make back button functional
