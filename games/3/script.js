@@ -95,6 +95,7 @@ const INIT = {
     }
   },
   animateLeaf: function(leaf) {
+    //animate totoro
     let totoro = document.body.getElementsByClassName("totoro");
     let number = leaf.getAttribute("id").split("-")[1];
     let index = number - 1;
@@ -104,11 +105,19 @@ const INIT = {
     } else {
       totoro[index].classList.add("hidden");
     }
+
+    //animate raindrop
+    let raindrop = document.body.getElementsByClassName("raindrop");
+
+    if (leaf.classList.contains("activated")) {
+      raindrop[index].classList.remove("hidden");
+    } else {
+      raindrop[index].classList.add("hidden");
+    }
   },
   playMusic: function(leaf) {
     let number = leaf.getAttribute("id").split("-")[1];
     let index = number - 1;
-    console.log(number, index);
 
      if (leaf.classList.contains("activated")) {
       leavesAudio[index].play();

@@ -93,7 +93,6 @@ hr {
 #totoro-3,
 #totoro-4,
 #totoro-5 {
-  background-image: url("./img/totoro-sprite-2.png");
   position: absolute; 
   width: 250px; 
   height: 250px; 
@@ -103,32 +102,110 @@ hr {
 
 
 #totoro-1 { 
+  background-image: url("./img/totoro-sprite-1.png");
   top: 46%;
   right: 18%;
 } 
 
 #totoro-2 { 
+  background-image: url("./img/totoro-sprite-2.png");
   top: 15%;
   right: 36%;
 } 
 
 #totoro-3 {
+  background-image: url("./img/totoro-sprite-3.png");
   bottom: 14%;
   right: 1%;
 }
 
 #totoro-4 {
+  background-image: url("./img/totoro-sprite-4.png");
   bottom: 26%;
   left: 6%;
 }
 
 #totoro-5 {
+  background-image: url("./img/totoro-sprite-5.png");
   top: 25%;
   left: 20%;
 }
 
 @keyframes totoro { 
   100%{ background-position: -1253px 0; }; 
+} 
+
+#raindrop-a,
+#raindrop-b,
+#raindrop-c,
+#raindrop-d,
+#raindrop-e {
+  position: absolute;
+}
+
+#raindrop-a {
+  background-image: url("./img/raindrop-a.png");
+  width: 137px; 
+  height: 480px;
+  bottom: 26%;
+  left: 6%; 
+  animation: raindropA 1.5s steps(49) infinite; 
+}
+
+@keyframes raindropA { 
+  100%{ background-position: -6713px 0; }; 
+} 
+
+#raindrop-b {
+  background-image: url("./img/raindrop-b.png");
+  width: 600px; 
+  height: 450px;
+  bottom: 26%;
+  left: 6%; 
+  animation: raindropB .5s steps(11) infinite; 
+}
+
+@keyframes raindropB { 
+  100%{ background-position: -6600px 0; }; 
+} 
+
+#raindrop-c {
+  background-image: url("./img/raindrop-c.png");
+  width: 640px; 
+  height: 480px;
+  bottom: 26%;
+  left: 6%; 
+  animation: raindropC .5s steps(12) infinite; 
+}
+
+@keyframes raindropC { 
+  100%{ background-position: -7680px 0; }; 
+} 
+
+#raindrop-d {
+  background-image: url("./img/raindrop-d.png");
+  width: 1216px; 
+  height: 1216px;
+  bottom: 26%;
+  left: 6%; 
+  animation: raindropD .5s steps(13) infinite; 
+}
+
+@keyframes raindropD { 
+  100%{ background-position: -15808px 0; }; 
+} 
+
+#raindrop-e {
+  background-image: url("./img/raindrop-e.png");
+  width: 640px; 
+  height: 480px;
+  bottom: 26%;
+  left: 6%; 
+  animation: raindropE .5s steps(15) infinite; 
+}
+
+@keyframes raindropE { 
+  100%{ background-position: -9600px 0; }; 
 } 
 
 .hidden {
