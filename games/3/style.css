@@ -32,12 +32,13 @@ body {
   width: 100%;
   object-fit: cover;
   position: absolute;
-  z-index: 2;
+  z-index: 4;
 }
 
 #leaves img {
   height: 200px;
   position: absolute;
+  z-index: 2;
 }
 
 #leaf-1 {
@@ -97,7 +98,7 @@ hr {
   width: 250px; 
   height: 250px; 
   animation: totoro .5s steps(5) infinite; 
-  z-index: 1; 
+  z-index: 3; 
 }
 
 
@@ -141,16 +142,18 @@ hr {
 #raindrop-d,
 #raindrop-e {
   position: absolute;
+  z-index: 1;
 }
 
 #raindrop-a {
   background-image: url("./img/raindrop-a.png");
   width: 137px; 
   height: 480px;
-  bottom: 26%;
-  left: 6%; 
+  top: 34%;
+  right: 41%;
   animation: raindropA 1.5s steps(49) infinite; 
 }
+/* top leaf, leaf-2 */
 
 @keyframes raindropA { 
   100%{ background-position: -6713px 0; }; 
@@ -158,25 +161,27 @@ hr {
 
 #raindrop-b {
   background-image: url("./img/raindrop-b.png");
-  width: 600px; 
-  height: 450px;
-  bottom: 26%;
-  left: 6%; 
+  width: 260px; 
+  height: 195px;
+  bottom: 2%;
+  right: 3%;
   animation: raindropB .5s steps(11) infinite; 
 }
+/* bottom right leaf, leaf-3*/
 
 @keyframes raindropB { 
-  100%{ background-position: -6600px 0; }; 
+  100%{ background-position: -2860px 0; }; 
 } 
 
 #raindrop-c {
   background-image: url("./img/raindrop-c.png");
   width: 640px; 
   height: 480px;
-  bottom: 26%;
-  left: 6%; 
+  top: 48%;
+  left: 15%;
   animation: raindropC .5s steps(12) infinite; 
 }
+/* second highest leaf, leaf-5 */
 
 @keyframes raindropC { 
   100%{ background-position: -7680px 0; }; 
@@ -184,25 +189,27 @@ hr {
 
 #raindrop-d {
   background-image: url("./img/raindrop-d.png");
-  width: 1216px; 
-  height: 1216px;
-  bottom: 26%;
+  width: 260px; 
+  height: 260px;
+  bottom: 8%;
   left: 6%; 
   animation: raindropD .5s steps(13) infinite; 
 }
+/* bottom left leaf, leaf-4 */
 
 @keyframes raindropD { 
-  100%{ background-position: -15808px 0; }; 
+  100%{ background-position: -3380px 0; }; 
 } 
 
 #raindrop-e {
   background-image: url("./img/raindrop-e.png");
   width: 640px; 
   height: 480px;
-  bottom: 26%;
-  left: 6%; 
+  top: 64%;
+  right: 12%;
   animation: raindropE .5s steps(15) infinite; 
 }
+/* middle right leaf, leaf-1 */
 
 @keyframes raindropE { 
   100%{ background-position: -9600px 0; }; 
