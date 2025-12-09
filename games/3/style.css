@@ -147,16 +147,16 @@ hr {
 
 #raindrop-1 {
   background-image: url("./img/raindrop-1.png");
-  width: 640px; 
-  height: 480px;
-  top: 64%;
-  right: 12%;
-  animation: raindrop1 .5s steps(15) infinite; 
+  width: 260px; 
+  height: 260px;
+  top: 75%;
+  right: 17%; 
+  animation: raindrop1 .5s steps(13) infinite; 
 }
-/* middle right leaf, leaf-1 */
+/* middle right leaf */
 
 @keyframes raindrop1 { 
-  100%{ background-position: -9600px 0; }; 
+  100%{ background-position: -3380px 0; }; 
 } 
 
 #raindrop-2 {
@@ -167,7 +167,7 @@ hr {
   right: 41%;
   animation: raindrop2 1.5s steps(49) infinite; 
 }
-/* top leaf, leaf-2 */
+/* top leaf */
 
 @keyframes raindrop2 { 
   100%{ background-position: -6713px 0; }; 
@@ -175,30 +175,30 @@ hr {
 
 #raindrop-3 {
   background-image: url("./img/raindrop-3.png");
-  width: 260px; 
-  height: 195px;
-  bottom: -1%;
+  width: 200px; 
+  height: 150px;
+  bottom: 0%;
   right: 3%;
   animation: raindrop3 .5s steps(11) infinite; 
 }
-/* bottom right leaf, leaf-3*/
+/* bottom right leaf */
 
 @keyframes raindrop3 { 
-  100%{ background-position: -2860px 0; }; 
+  100%{ background-position: -2200px 0; }; 
 } 
 
 #raindrop-4 {
   background-image: url("./img/raindrop-4.png");
-  width: 260px; 
-  height: 260px;
-  bottom: 8%;
-  left: 6%; 
-  animation: raindrop4 .5s steps(13) infinite; 
+  width: 640px; 
+  height: 480px;
+  bottom: -10%;
+  left: -4%;
+  animation: raindrop4 .8s steps(15) infinite; 
 }
-/* bottom left leaf, leaf-4 */
+/* bottom left leaf */
 
 @keyframes raindrop4 { 
-  100%{ background-position: -3380px 0; }; 
+  100%{ background-position: -9600px 0; }; 
 } 
 
 #raindrop-5 {
@@ -206,10 +206,10 @@ hr {
   width: 640px; 
   height: 480px;
   top: 48%;
-  left: 13%;
+  left: 12%;
   animation: raindrop5 .5s steps(12) infinite; 
 }
-/* second highest leaf, leaf-5 */
+/* second highest leaf */
 
 @keyframes raindrop5 { 
   100%{ background-position: -7680px 0; }; 
