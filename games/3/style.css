@@ -52,7 +52,7 @@ body {
 }
 
 #leaf-3 {
-  bottom: 5%;
+  bottom: 4.5%;
   right: 3%;
 }
 
@@ -85,7 +85,7 @@ hr {
     transform: rotate(105deg) translateX(0);
   } 
   to {
-    transform: rotate(105deg) translateX(calc(100vh + 20px));
+    transform: rotate(105deg) translateX(calc(100vh + 50px));
   }
 }
 
@@ -116,7 +116,7 @@ hr {
 
 #totoro-3 {
   background-image: url("./img/totoro-sprite-3.png");
-  bottom: 14%;
+  bottom: 13.5%;
   right: 1%;
 }
 
@@ -163,8 +163,8 @@ hr {
   background-image: url("./img/raindrop-2.png");
   width: 137px; 
   height: 480px;
-  top: 34%;
-  right: 41%;
+  top: 34.5%;
+  right: 42.5%;
   animation: raindrop2 1.5s steps(49) infinite; 
 }
 /* top leaf */
@@ -175,16 +175,16 @@ hr {
 
 #raindrop-3 {
   background-image: url("./img/raindrop-3.png");
-  width: 200px; 
+  width: 150px; 
   height: 150px;
   bottom: 0%;
-  right: 3%;
+  right: 5%;
   animation: raindrop3 .5s steps(11) infinite; 
 }
 /* bottom right leaf */
 
 @keyframes raindrop3 { 
-  100%{ background-position: -2200px 0; }; 
+  100%{ background-position: -1650px 0; }; 
 } 
 
 #raindrop-4 {
