@@ -10,7 +10,14 @@ let leavesAudio = [leaf1Audio, leaf2Audio, leaf3Audio, leaf4Audio, leaf5Audio];
 
 for (let i = 0; i < leavesAudio.length; i++) {
   leavesAudio[i].loop = true;
+  leavesAudio[i].muted = true;
 }
+
+document.body.addEventListener("click", function() {
+  for (let i = 0; i < leavesAudio.length; i++) {
+    leavesAudio[i].play();
+  }
+});
 
 //make cover screen disappear
 let coverImage = document.getElementsByClassName("cover-image");
@@ -120,9 +127,9 @@ const INIT = {
     let index = number - 1;
 
      if (leaf.classList.contains("activated")) {
-      leavesAudio[index].play();
+      leavesAudio[index].muted = false;
     } else {
-      leavesAudio[index].pause();
+      leavesAudio[index].muted = true;
     }
   },
   returnToCalendar: function() {
