@@ -20,7 +20,11 @@ const INIT = {
   addUnlockedDays: function() {
     let days = document.getElementsByClassName("ornament-box");
     days[0].setAttribute("src", "./img/1.png");
-    days[0].setAttribute("onclick", "location.href = './games/1/star-catcher.html';")
+    days[0].setAttribute("onclick", "location.href = './games/1/star-catcher.html';");
+    days[1].setAttribute("src", "./img/2.png");
+    days[1].setAttribute("onclick", "location.href = './games/2/story-creator.html';");
+    days[2].setAttribute("src", "./img/3.png");
+    days[2].setAttribute("onclick", "location.href = './games/3/rainy-day-totoro.html';");
   }
 }
 
