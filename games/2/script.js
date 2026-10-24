@@ -245,9 +245,9 @@ const GAME = {
   },
   declareBoardValues: function() {
     this.board = document.getElementById("game-board");
-    this.board.rowCount = 12;
-    this.board.columnCount = 12;
-    this.board.tileSize = 40;
+    this.board.rowCount = 15;
+    this.board.columnCount = 15;
+    this.board.tileSize = 50;
     this.board.width = this.board.columnCount * this.board.tileSize;
     this.board.height = this.board.rowCount * this.board.tileSize;
     this.context = this.board.getContext("2d");
@@ -266,8 +266,9 @@ const GAME = {
     setTimeout(GAME.update, 50);
   },
   draw: function() {
-    this.context.drawImage(this.animalImage, 20, 20, 32, 32/*x, y, width, height*/);
-    this.context.drawImage(this.destinationImage, 70, 70, 32, 32);
+    this.context.drawImage(this.animalImage, 0, 350, 50, 50/*x, y, width, height*/);
+    this.context.drawImage(this.destinationImage, 600, 350, 150, 150);
+    this.context.drawImage(this.itemImage, 300, 0, 50, 50);
   }
 
 }
