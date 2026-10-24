@@ -241,6 +241,7 @@ const GAME = {
 
     this.declareBoardValues();
     this.loadImages();
+    this.update();
   },
   declareBoardValues: function() {
     this.board = document.getElementById("game-board");
@@ -261,11 +262,12 @@ const GAME = {
   },
   update: function() {
     //move
-    this.draw();
-    //setTimeout
+    GAME.draw();
+    setTimeout(GAME.update, 50);
   },
   draw: function() {
-    
+    this.context.drawImage(this.animalImage, 20, 20, 32, 32/*x, y, width, height*/);
+    this.context.drawImage(this.destinationImage, 70, 70, 32, 32);
   }
 
 }
