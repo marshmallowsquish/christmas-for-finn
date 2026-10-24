@@ -181,6 +181,9 @@ const PAGE_OPTIONS_MENU = {
       let URL3 = ")"
 
       pageScreen.style.backgroundImage= URL1 + URL2 + URL3;
+
+      //create game board
+      GAME.createBoard();
     })
   },
   displayStoryOptions: function() {
@@ -216,6 +219,55 @@ const PAGE_OPTIONS_MENU = {
       button.appendChild(image);
     }
   }
+}
+
+const GAME = {
+  board: null,
+  context: null,
+  animal: document.getElementById("story-animal").textContent,
+  destination: document.getElementById("story-destination").textContent,
+  item: document.getElementById("story-item").textContent,
+  animalImage: null,
+  destinationImage: null,
+  itemImage: null,
+  createBoard: function() {
+    //create board canvas
+    let gameContainer = document.getElementById("game-container");
+    
+    let newBoard = document.createElement("canvas");
+    newBoard.setAttribute("id", "game-board");
+    newBoard.style.border = "1px solid white";
+    gameContainer.appendChild(newBoard);
+
+    this.declareBoardValues();
+    this.loadImages();
+  },
+  declareBoardValues: function() {
+    this.board = document.getElementById("game-board");
+    this.board.rowCount = 12;
+    this.board.columnCount = 12;
+    this.board.tileSize = 40;
+    this.board.width = this.board.columnCount * this.board.tileSize;
+    this.board.height = this.board.rowCount * this.board.tileSize;
+    this.context = this.board.getContext("2d");
+  },
+  loadImages: function() {
+    this.animalImage = new Image();
+    this.animalImage.src = `./img/cover/${this.animal}.png`
+    this.destinationImage = new Image();
+    this.destinationImage.src = `./img/page/${this.destination}.png`
+    this.itemImage = new Image();
+    this.itemImage.src = `./img/page/${this.item}.png`
+  },
+  update: function() {
+    //move
+    this.draw();
+    //setTimeout
+  },
+  draw: function() {
+    
+  }
+
 }
 
 SELECTION_SCREENS.activateScreen("cover"); 
