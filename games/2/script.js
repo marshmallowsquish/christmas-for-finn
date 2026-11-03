@@ -229,7 +229,7 @@ const GAME = {
   item: null,
   animalImage: null,
   destinationImage: null,
-  itemImage: null,
+  itemImages: null,
   updateValues: function() {
     this.animal = document.getElementById("story-animal").textContent;
     this.destination = document.getElementById("story-destination").textContent;
@@ -238,7 +238,6 @@ const GAME = {
   },
   createBoard: function() {
     this.updateValues();
-    console.log(this.animal + this.destination + this.item);
 
     //create board canvas
     let gameContainer = document.getElementById("game-container");
@@ -262,15 +261,15 @@ const GAME = {
     this.context = this.board.getContext("2d");
   },
   loadImages: function() {
-    console.log(`./img/cover/${this.animal}.png`);
-    console.log(`./img/page/${this.destination}.png`);
-    console.log(`./img/page/${this.item}.png`);
     this.animalImage = new Image();
     this.animalImage.src = `./img/cover/${this.animal}.png`
     this.destinationImage = new Image();
     this.destinationImage.src = `./img/page/${this.destination}.png`
-    this.itemImage = new Image();
-    this.itemImage.src = `./img/page/${this.item}.png`
+    this.itemImages = [];
+    for (let i = 0; i < 7; i++) {
+      this.itemImages[i] = new Image();
+      this.itemImages[i].src = `./img/game/items/${this.item}_${i + 1}.jpg`
+    }
   },
   update: function() {
     //move
@@ -281,11 +280,12 @@ const GAME = {
     //x, y, width, height
     this.context.drawImage(this.animalImage, 0, 350, 50, 50);
     this.context.drawImage(this.destinationImage, 600, this.destinationY, 150, 150);
-    this.context.drawImage(this.itemImage, 300, 0, 50, 50);
+    for (let i = 0; i < 7; i++) {
+      this.context.drawImage(this.itemImages[i], 300, 0, 50, 50);
+    }
 
     /*
     next steps:
-    -randomize Y value of destination image
     -make item images into array instead, and have them all show up at random spots (that don't conflict with animal or destination)
     */
   }
