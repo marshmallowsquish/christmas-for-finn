@@ -224,13 +224,21 @@ const PAGE_OPTIONS_MENU = {
 const GAME = {
   board: null,
   context: null,
-  animal: document.getElementById("story-animal").textContent,
-  destination: document.getElementById("story-destination").textContent,
-  item: document.getElementById("story-item").textContent,
+  animal: null,
+  destination: null,
+  item: null,
   animalImage: null,
   destinationImage: null,
   itemImage: null,
+  updateValues: function() {
+    this.animal = document.getElementById("story-animal").textContent;
+    this.destination = document.getElementById("story-destination").textContent;
+    this.item = document.getElementById("story-item").textContent;
+  },
   createBoard: function() {
+    this.updateValues();
+    console.log(this.animal + this.destination + this.item);
+
     //create board canvas
     let gameContainer = document.getElementById("game-container");
     
@@ -253,6 +261,9 @@ const GAME = {
     this.context = this.board.getContext("2d");
   },
   loadImages: function() {
+    console.log(`./img/cover/${this.animal}.png`);
+    console.log(`./img/page/${this.destination}.png`);
+    console.log(`./img/page/${this.item}.png`);
     this.animalImage = new Image();
     this.animalImage.src = `./img/cover/${this.animal}.png`
     this.destinationImage = new Image();
@@ -266,9 +277,16 @@ const GAME = {
     setTimeout(GAME.update, 50);
   },
   draw: function() {
-    this.context.drawImage(this.animalImage, 0, 350, 50, 50/*x, y, width, height*/);
+    //x, y, width, height
+    this.context.drawImage(this.animalImage, 0, 350, 50, 50);
     this.context.drawImage(this.destinationImage, 600, 350, 150, 150);
     this.context.drawImage(this.itemImage, 300, 0, 50, 50);
+
+    /*
+    next steps:
+    -randomize Y value of destination image
+    -make item images into array instead, and have them all show up at random spots (that don't conflict with animal or destination)
+    */
   }
 
 }
