@@ -234,6 +234,7 @@ const GAME = {
     this.animal = document.getElementById("story-animal").textContent;
     this.destination = document.getElementById("story-destination").textContent;
     this.item = document.getElementById("story-item").textContent;
+    this.destinationY = Math.floor(Math.random() * 15) * 50;
   },
   createBoard: function() {
     this.updateValues();
@@ -279,7 +280,7 @@ const GAME = {
   draw: function() {
     //x, y, width, height
     this.context.drawImage(this.animalImage, 0, 350, 50, 50);
-    this.context.drawImage(this.destinationImage, 600, 350, 150, 150);
+    this.context.drawImage(this.destinationImage, 600, this.destinationY, 150, 150);
     this.context.drawImage(this.itemImage, 300, 0, 50, 50);
 
     /*
