@@ -230,6 +230,8 @@ const GAME = {
     this.animal.y = 350;
     this.animal.velocityX = 0;
     this.animal.velocityY = 0;
+    this.animal.width = 50;
+    this.animal.height = 50;
     this.animal.image = new Image();
     this.animal.image.src = `./img/game/animals/${this.animal.selection}.png`
 
@@ -243,7 +245,7 @@ const GAME = {
 
     //items
     this.itemSelection = document.getElementById("story-item").textContent;
-    this.itemCount = 7;
+    this.itemCount = 35;
     this.items = [];
     for (let i = 0; i < this.itemCount; i++) {
       this.items[i] = {};
@@ -251,6 +253,8 @@ const GAME = {
       this.items[i].y = (Math.floor(Math.random() * 14) * 50) + 50;
       this.items[i].velocityX = 0;
       this.items[i].velocityY = 0;
+      this.items[i].width = 50;
+      this.items[i].height = 50;
       this.items[i].image = new Image();
       this.items[i].image.src = `./img/game/items/${this.itemSelection}_${i + 1}.png`;
     }
@@ -286,11 +290,11 @@ const GAME = {
   },
   draw: function() {
     this.context.clearRect(0, 0, this.board.width, this.board.height);
-    //x, y, width, height
-    this.context.drawImage(this.animal.image, this.animal.x, this.animal.y, 50, 50);
+
+    this.context.drawImage(this.animal.image, this.animal.x, this.animal.y, this.animal.width, this.animal.height);
     this.context.drawImage(this.destination.image, this.destination.x, this.destination.y, 150, 150);
     for (let i = 0; i < this.itemCount; i++) {
-      this.context.drawImage(this.items[i].image, this.items[i].x, this.items[i].y, 50, 50);
+      this.context.drawImage(this.items[i].image, this.items[i].x, this.items[i].y, this.items[i].width, this.items[i].height);
     }
   },
   move: function() {
@@ -298,25 +302,35 @@ const GAME = {
     this.animal.y += this.animal.velocityY;
 
     //check animal and wall collisions
-    if (this.animal.x > this.board.width - 50) {
+    if (this.animal.x < 0 || this.animal.x > this.board.width - 50 ) {
       this.animal.x -= this.animal.velocityX;
     }
 
-    if (this.animal.x < 0) {
-      this.animal.x -= this.animal.velocityX;
-    }
-
-    if (this.animal.y > this.board.height - 50) {
-      this.animal.y -= this.animal.velocityY;
-    }
-
-    if (this.animal.y < 0) {
+    if (this.animal.y < 0 || this.animal.y > this.board.height - 50) {
       this.animal.y -= this.animal.velocityY;
     }
 
     //check animal + item collision
+    for (let i = 0; i < this.itemCount; i++) {
+      if (this.collision(this.animal, this.items[i])) {
+        this.animal.x -= this.animal.velocityX;
+        this.animal.y -= this.animal.velocityY;
+      }
+    }
 
     //check item + item collision
+
+    //prevent items from landing on top of each other
+    for (let i = 0; i < this.itemCount - 1; i++) { 
+      for (let z = i + 1; z < this.itemCount; z++) {
+        if (this.collision(this.items[i], this.items[z])) {
+          console.log(this.collision(this.items[i], this.items[z]))
+          this.items[i].x = (Math.floor(Math.random() * 11) * 50) + 50;
+          this.items[i].y = (Math.floor(Math.random() * 14) * 50) + 50;
+        }
+      }
+    }
+
   },
   moveAnimal: function(e) {
     if (e.code === "ArrowUp" || e.code === "KeyW") {
