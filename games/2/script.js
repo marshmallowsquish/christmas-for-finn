@@ -231,22 +231,36 @@ const GAME = {
   destinationImage: null,
   itemImages: null,
   updateValues: function() {
-    this.velocityX = 0;
-    this.velocityY = 0;
+    //animal
     this.animal = document.getElementById("story-animal").textContent;
     this.animalX = 0;
     this.animalY = 350;
-    this.destination = document.getElementById("story-destination").textContent;
-    this.item = document.getElementById("story-item").textContent;
+    this.animalImage = new Image();
+    this.animalImage.src = `./img/game/animals/${this.animal}.png`
 
+    //destination
+    this.destination = document.getElementById("story-destination").textContent;
+    this.destinationX = 600;
     this.destinationY = Math.floor(Math.random() * 13) * 50;
+    this.destinationImage = new Image();
+    this.destinationImage.src = `./img/page/${this.destination}.png`
+
+    //items
+    this.item = document.getElementById("story-item").textContent;
     this.itemX = [];
     this.itemY = [];
-
     for (let i = 0; i < 7; i++) {
       this.itemX[i] = (Math.floor(Math.random() * 11) * 50) + 50;
       this.itemY[i] = (Math.floor(Math.random() * 14) * 50) + 50;
     }
+    this.itemImages = [];
+    for (let i = 0; i < 7; i++) {
+      this.itemImages[i] = new Image();
+      this.itemImages[i].src = `./img/game/items/${this.item}_${i + 1}.png`
+    }
+
+    this.animalVelocityX = 0;
+    this.animalVelocityY = 0;
   },
   createBoard: function() {
     document.addEventListener("keydown", this.moveAnimal);
@@ -261,7 +275,6 @@ const GAME = {
     gameContainer.appendChild(newBoard);
 
     this.declareBoardValues();
-    this.loadImages();
     this.update();
   },
   declareBoardValues: function() {
@@ -273,17 +286,6 @@ const GAME = {
     this.board.height = this.board.rowCount * this.board.tileSize;
     this.context = this.board.getContext("2d");
   },
-  loadImages: function() {
-    this.animalImage = new Image();
-    this.animalImage.src = `./img/game/animals/${this.animal}.png`
-    this.destinationImage = new Image();
-    this.destinationImage.src = `./img/page/${this.destination}.png`
-    this.itemImages = [];
-    for (let i = 0; i < 7; i++) {
-      this.itemImages[i] = new Image();
-      this.itemImages[i].src = `./img/game/items/${this.item}_${i + 1}.png`
-    }
-  },
   update: function() {
     GAME.move();
     GAME.draw();
@@ -293,20 +295,14 @@ const GAME = {
     this.context.clearRect(0, 0, this.board.width, this.board.height);
     //x, y, width, height
     this.context.drawImage(this.animalImage, this.animalX, this.animalY, 50, 50);
-    this.context.drawImage(this.destinationImage, 600, this.destinationY, 150, 150);
+    this.context.drawImage(this.destinationImage, this.destinationX, this.destinationY, 150, 150);
     for (let i = 0; i < 7; i++) {
       this.context.drawImage(this.itemImages[i], this.itemX[i], this.itemY[i], 50, 50);
     }
-
-    /*
-    next steps:
-    -prevent item images from landing on the same spot
-    -clear board to prevent image stacking
-    */
   },
   move: function() {
-    this.animalX += this.velocityX;
-    this.animalY += this.velocityY;
+    this.animalX += this.animalVelocityX;
+    this.animalY += this.animalVelocityY;
   },
   moveAnimal: function(e) {
     if (e.code === "ArrowUp" || e.code === "KeyW") {
@@ -321,17 +317,17 @@ const GAME = {
   },
   updateVelocity: function(direction) {
     if (direction === "up") {
-      this.velocityX = 0;
-      this.velocityY = -this.board.tileSize/4;
+      this.animalVelocityX = 0;
+      this.animalVelocityY = -this.board.tileSize/4;
     } else if (direction === "down") {
-      this.velocityX = 0;
-      this.velocityY = this.board.tileSize/4;
+      this.animalVelocityX = 0;
+      this.animalVelocityY = this.board.tileSize/4;
     } else if (direction === "left") {
-      this.velocityX = -this.board.tileSize/4;
-      this.velocityY = 0;
+      this.animalVelocityX = -this.board.tileSize/4;
+      this.animalVelocityY = 0;
     } else if (direction === "right") {
-      this.velocityX = this.board.tileSize/4;
-      this.velocityY = 0;
+      this.animalVelocityX = this.board.tileSize/4;
+      this.animalVelocityY = 0;
     } 
   }
 
@@ -341,3 +337,11 @@ SELECTION_SCREENS.activateScreen("cover");
 COVER_OPTIONS_MENU.createGrid();
 COVER_OPTIONS_MENU.addButtonFunctionality();
 COVER_OPTIONS_MENU.displayPage("color");
+
+
+   /*
+    next steps:
+    -prevent collisions
+    -prevent item images from landing on the same spot
+    -the key initial scale 1 is not recognized and ignored
+    */
