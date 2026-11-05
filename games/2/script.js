@@ -231,7 +231,11 @@ const GAME = {
   destinationImage: null,
   itemImages: null,
   updateValues: function() {
+    this.velocityX = 0;
+    this.velocityY = 0;
     this.animal = document.getElementById("story-animal").textContent;
+    this.animalX = 0;
+    this.animalY = 350;
     this.destination = document.getElementById("story-destination").textContent;
     this.item = document.getElementById("story-item").textContent;
 
@@ -245,6 +249,7 @@ const GAME = {
     }
   },
   createBoard: function() {
+    document.addEventListener("keydown", this.moveAnimal);
     this.updateValues();
 
     //create board canvas
@@ -280,13 +285,14 @@ const GAME = {
     }
   },
   update: function() {
-    //move
+    GAME.move();
     GAME.draw();
     setTimeout(GAME.update, 50);
   },
   draw: function() {
+    this.context.clearRect(0, 0, this.board.width, this.board.height);
     //x, y, width, height
-    this.context.drawImage(this.animalImage, 0, 350, 50, 50);
+    this.context.drawImage(this.animalImage, this.animalX, this.animalY, 50, 50);
     this.context.drawImage(this.destinationImage, 600, this.destinationY, 150, 150);
     for (let i = 0; i < 7; i++) {
       this.context.drawImage(this.itemImages[i], this.itemX[i], this.itemY[i], 50, 50);
@@ -294,11 +300,39 @@ const GAME = {
 
     /*
     next steps:
-    -make item images transparent
-    -normalize animal dimensions
     -prevent item images from landing on the same spot
     -clear board to prevent image stacking
     */
+  },
+  move: function() {
+    this.animalX += this.velocityX;
+    this.animalY += this.velocityY;
+  },
+  moveAnimal: function(e) {
+    if (e.code === "ArrowUp" || e.code === "KeyW") {
+      GAME.updateVelocity("up");
+    } else if (e.code === "ArrowDown" || e.code === "KeyS") {
+      GAME.updateVelocity("down");
+    } else if (e.code === "ArrowLeft" || e.code === "KeyA") {
+      GAME.updateVelocity("left");
+    } else if (e.code === "ArrowRight" || e.code === "KeyD") {
+      GAME.updateVelocity("right");
+    } 
+  },
+  updateVelocity: function(direction) {
+    if (direction === "up") {
+      this.velocityX = 0;
+      this.velocityY = -this.board.tileSize/4;
+    } else if (direction === "down") {
+      this.velocityX = 0;
+      this.velocityY = this.board.tileSize/4;
+    } else if (direction === "left") {
+      this.velocityX = -this.board.tileSize/4;
+      this.velocityY = 0;
+    } else if (direction === "right") {
+      this.velocityX = this.board.tileSize/4;
+      this.velocityY = 0;
+    } 
   }
 
 }
