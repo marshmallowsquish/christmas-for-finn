@@ -222,50 +222,49 @@ const PAGE_OPTIONS_MENU = {
 }
 
 const GAME = {
-  board: null,
-  context: null,
-  animal: null,
-  destination: null,
-  item: null,
-  animalImage: null,
-  destinationImage: null,
-  itemImages: null,
-  updateValues: function() {
+  declareValues: function() {
     //animal
-    this.animal = document.getElementById("story-animal").textContent;
-    this.animalX = 0;
-    this.animalY = 350;
-    this.animalImage = new Image();
-    this.animalImage.src = `./img/game/animals/${this.animal}.png`
+    this.animal = {};
+    this.animal.selection = document.getElementById("story-animal").textContent;
+    this.animal.x = 0;
+    this.animal.y = 350;
+    this.animal.velocityX = 0;
+    this.animal.velocityY = 0;
+    this.animal.image = new Image();
+    this.animal.image.src = `./img/game/animals/${this.animal.selection}.png`
 
     //destination
-    this.destination = document.getElementById("story-destination").textContent;
-    this.destinationX = 600;
-    this.destinationY = Math.floor(Math.random() * 13) * 50;
-    this.destinationImage = new Image();
-    this.destinationImage.src = `./img/page/${this.destination}.png`
+    this.destination = {};
+    this.destination.selection = document.getElementById("story-destination").textContent;
+    this.destination.x = 600;
+    this.destination.y = Math.floor(Math.random() * 13) * 50;
+    this.destination.image = new Image();
+    this.destination.image.src = `./img/page/${this.destination.selection}.png`
 
     //items
-    this.item = document.getElementById("story-item").textContent;
-    this.itemX = [];
-    this.itemY = [];
-    for (let i = 0; i < 7; i++) {
-      this.itemX[i] = (Math.floor(Math.random() * 11) * 50) + 50;
-      this.itemY[i] = (Math.floor(Math.random() * 14) * 50) + 50;
-    }
-    this.itemImages = [];
-    for (let i = 0; i < 7; i++) {
-      this.itemImages[i] = new Image();
-      this.itemImages[i].src = `./img/game/items/${this.item}_${i + 1}.png`
+    this.itemSelection = document.getElementById("story-item").textContent;
+    this.itemCount = 7;
+    this.items = [];
+    for (let i = 0; i < this.itemCount; i++) {
+      this.items[i] = {};
+      this.items[i].x = (Math.floor(Math.random() * 11) * 50) + 50;
+      this.items[i].y = (Math.floor(Math.random() * 14) * 50) + 50;
+      this.items[i].velocityX = 0;
+      this.items[i].velocityY = 0;
+      this.items[i].image = new Image();
+      this.items[i].image.src = `./img/game/items/${this.itemSelection}_${i + 1}.png`;
     }
 
-    this.animalVelocityX = 0;
-    this.animalVelocityY = 0;
+    //board
+    this.board = document.getElementById("game-board");
+    this.board.rowCount = 15;
+    this.board.columnCount = 15;
+    this.board.tileSize = 50;
+    this.board.width = this.board.columnCount * this.board.tileSize;
+    this.board.height = this.board.rowCount * this.board.tileSize;
+    this.context = this.board.getContext("2d");
   },
   createBoard: function() {
-    document.addEventListener("keydown", this.moveAnimal);
-    this.updateValues();
-
     //create board canvas
     let gameContainer = document.getElementById("game-container");
     
@@ -274,17 +273,11 @@ const GAME = {
     newBoard.style.border = "1px solid white";
     gameContainer.appendChild(newBoard);
 
-    this.declareBoardValues();
+    //declare event listeners and values
+    document.addEventListener("keydown", this.moveAnimal);
+    this.declareValues();
+
     this.update();
-  },
-  declareBoardValues: function() {
-    this.board = document.getElementById("game-board");
-    this.board.rowCount = 15;
-    this.board.columnCount = 15;
-    this.board.tileSize = 50;
-    this.board.width = this.board.columnCount * this.board.tileSize;
-    this.board.height = this.board.rowCount * this.board.tileSize;
-    this.context = this.board.getContext("2d");
   },
   update: function() {
     GAME.move();
@@ -294,15 +287,21 @@ const GAME = {
   draw: function() {
     this.context.clearRect(0, 0, this.board.width, this.board.height);
     //x, y, width, height
-    this.context.drawImage(this.animalImage, this.animalX, this.animalY, 50, 50);
-    this.context.drawImage(this.destinationImage, this.destinationX, this.destinationY, 150, 150);
-    for (let i = 0; i < 7; i++) {
-      this.context.drawImage(this.itemImages[i], this.itemX[i], this.itemY[i], 50, 50);
+    this.context.drawImage(this.animal.image, this.animal.x, this.animal.y, 50, 50);
+    this.context.drawImage(this.destination.image, this.destination.x, this.destination.y, 150, 150);
+    for (let i = 0; i < this.itemCount; i++) {
+      this.context.drawImage(this.items[i].image, this.items[i].x, this.items[i].y, 50, 50);
     }
   },
   move: function() {
-    this.animalX += this.animalVelocityX;
-    this.animalY += this.animalVelocityY;
+    this.animal.x += this.animal.velocityX;
+    this.animal.y += this.animal.velocityY;
+
+    //check wall collisions
+
+    //check animal + item collision
+
+    //check item + item collision
   },
   moveAnimal: function(e) {
     if (e.code === "ArrowUp" || e.code === "KeyW") {
@@ -317,20 +316,25 @@ const GAME = {
   },
   updateVelocity: function(direction) {
     if (direction === "up") {
-      this.animalVelocityX = 0;
-      this.animalVelocityY = -this.board.tileSize/4;
+      this.animal.velocityX = 0;
+      this.animal.velocityY = -this.board.tileSize/4;
     } else if (direction === "down") {
-      this.animalVelocityX = 0;
-      this.animalVelocityY = this.board.tileSize/4;
+      this.animal.velocityX = 0;
+      this.animal.velocityY = this.board.tileSize/4;
     } else if (direction === "left") {
-      this.animalVelocityX = -this.board.tileSize/4;
-      this.animalVelocityY = 0;
+      this.animal.velocityX = -this.board.tileSize/4;
+      this.animal.velocityY = 0;
     } else if (direction === "right") {
-      this.animalVelocityX = this.board.tileSize/4;
-      this.animalVelocityY = 0;
+      this.animal.velocityX = this.board.tileSize/4;
+      this.animal.velocityY = 0;
     } 
+  },
+  collision: function(a, b) {
+    return a.x < b.x + b.width &&
+    a.x + a.width > b.x &&
+    a.y < b.y + b.height &&
+    a.y + a.height > b.y;
   }
-
 }
 
 SELECTION_SCREENS.activateScreen("cover"); 
@@ -343,5 +347,4 @@ COVER_OPTIONS_MENU.displayPage("color");
     next steps:
     -prevent collisions
     -prevent item images from landing on the same spot
-    -the key initial scale 1 is not recognized and ignored
     */
