@@ -297,7 +297,22 @@ const GAME = {
     this.animal.x += this.animal.velocityX;
     this.animal.y += this.animal.velocityY;
 
-    //check wall collisions
+    //check animal and wall collisions
+    if (this.animal.x > this.board.width - 50) {
+      this.animal.x -= this.animal.velocityX;
+    }
+
+    if (this.animal.x < 0) {
+      this.animal.x -= this.animal.velocityX;
+    }
+
+    if (this.animal.y > this.board.height - 50) {
+      this.animal.y -= this.animal.velocityY;
+    }
+
+    if (this.animal.y < 0) {
+      this.animal.y -= this.animal.velocityY;
+    }
 
     //check animal + item collision
 
