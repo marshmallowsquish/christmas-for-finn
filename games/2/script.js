@@ -270,13 +270,13 @@ const GAME = {
   },
   loadImages: function() {
     this.animalImage = new Image();
-    this.animalImage.src = `./img/cover/${this.animal}.png`
+    this.animalImage.src = `./img/game/animals/${this.animal}.png`
     this.destinationImage = new Image();
     this.destinationImage.src = `./img/page/${this.destination}.png`
     this.itemImages = [];
     for (let i = 0; i < 7; i++) {
       this.itemImages[i] = new Image();
-      this.itemImages[i].src = `./img/game/items/${this.item}_${i + 1}.jpg`
+      this.itemImages[i].src = `./img/game/items/${this.item}_${i + 1}.png`
     }
   },
   update: function() {
@@ -294,7 +294,10 @@ const GAME = {
 
     /*
     next steps:
-    -make item images into array instead, and have them all show up at random spots (that don't conflict with animal or destination)
+    -make item images transparent
+    -normalize animal dimensions
+    -prevent item images from landing on the same spot
+    -clear board to prevent image stacking
     */
   }
 
