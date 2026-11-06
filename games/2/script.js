@@ -224,6 +224,9 @@ const PAGE_OPTIONS_MENU = {
 const GAME = {
   gameStarted: false,
   declareValues: function() {
+    //time of day
+    this.timeSelection = document.getElementById("story-time").textContent;
+
     //animal
     this.animal = {};
     this.animal.selection = document.getElementById("story-animal").textContent;
@@ -280,7 +283,10 @@ const GAME = {
 
     //declare event listeners and values
     document.addEventListener("keydown", this.moveAnimal);
+    document.addEventListener("keyup", this.stopAnimal);
     this.declareValues();
+
+    this.board.style.backgroundColor = "hsla(0, 0%, 100%, 0.5)";
 
     this.update();
   },
@@ -332,7 +338,6 @@ const GAME = {
           }
         }
       }
-  
     }
   },
   moveAnimal: function(e) {
@@ -345,6 +350,10 @@ const GAME = {
     } else if (e.code === "ArrowRight" || e.code === "KeyD") {
       GAME.updateVelocity("right");
     } 
+  },
+  stopAnimal: function() {
+    GAME.animal.velocityX = 0;
+    GAME.animal.velocityY = 0;
   },
   updateVelocity: function(direction) {
     this.gameStarted = true;
@@ -379,5 +388,12 @@ COVER_OPTIONS_MENU.displayPage("color");
 
    /*
     next steps:
+    -increase number of items to match rocks (35)
+    -fix slow loading of page image
+
+    -allow player to push items
     -prevent collisions between items
+    -create different behaviors depending upon item
+
+    -improve lag on animal movement
     */
