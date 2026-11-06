@@ -222,6 +222,7 @@ const PAGE_OPTIONS_MENU = {
 }
 
 const GAME = {
+  gameStarted: false,
   declareValues: function() {
     //animal
     this.animal = {};
@@ -321,16 +322,18 @@ const GAME = {
     //check item + item collision
 
     //prevent items from landing on top of each other
-    for (let i = 0; i < this.itemCount - 1; i++) { 
-      for (let z = i + 1; z < this.itemCount; z++) {
-        if (this.collision(this.items[i], this.items[z])) {
-          console.log(this.collision(this.items[i], this.items[z]))
-          this.items[i].x = (Math.floor(Math.random() * 11) * 50) + 50;
-          this.items[i].y = (Math.floor(Math.random() * 14) * 50) + 50;
+    if (!this.gameStarted) {
+      for (let i = 0; i < this.itemCount - 1; i++) { 
+        for (let z = i + 1; z < this.itemCount; z++) {
+          if (this.collision(this.items[i], this.items[z])) {
+            console.log(this.collision(this.items[i], this.items[z]))
+            this.items[i].x = (Math.floor(Math.random() * 11) * 50) + 50;
+            this.items[i].y = (Math.floor(Math.random() * 14) * 50) + 50;
+          }
         }
       }
+  
     }
-
   },
   moveAnimal: function(e) {
     if (e.code === "ArrowUp" || e.code === "KeyW") {
@@ -344,6 +347,8 @@ const GAME = {
     } 
   },
   updateVelocity: function(direction) {
+    this.gameStarted = true;
+
     if (direction === "up") {
       this.animal.velocityX = 0;
       this.animal.velocityY = -this.board.tileSize/4;
@@ -374,6 +379,5 @@ COVER_OPTIONS_MENU.displayPage("color");
 
    /*
     next steps:
-    -prevent collisions
-    -prevent item images from landing on the same spot
+    -prevent collisions between items
     */
