@@ -249,7 +249,7 @@ const GAME = {
 
     //items
     this.itemSelection = document.getElementById("story-item").textContent;
-    this.itemCount = 35;
+    this.itemCount = 7;
     this.items = [];
     for (let i = 0; i < this.itemCount; i++) {
       this.items[i] = {};
