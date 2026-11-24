@@ -4,6 +4,15 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: black;
+}
+
+#content,
+#page-screen {
+  background-color: white;
+}
+
 #back-button {
   background-color: hsl(120, 50%, 55%);
   height: 4rem;
@@ -115,12 +124,9 @@
   background-size: cover;
   height: 100vh;
   width: 100vw;
-  padding: 9rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 6rem;
+  display: grid;
+  grid-template-columns: 1fr 9fr 1fr;
+  grid-template-rows: 1fr 9fr 1fr;
 }
 
   #top-border,
@@ -128,33 +134,38 @@
   #right-border,
   #left-border {
     background-color: #f44034;
-    position: fixed;
-    z-index: 1;
   }
 
-  #top-border {
-    min-height: 4rem;
-    min-width: 200vw;
-    top: 0;
+  #top-border,
+  #bottom-border {
+    grid-column: 1 / 4;
+  }
+
+  #page-center {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+  }
+
+/*
+   #top-border {
+    height: 4rem;
   }
 
   #bottom-border {
-    min-height: 4rem;
-    min-width: 200vw;
-    bottom: 0;
+    height: 4rem;
   }
 
   #right-border {
-    min-height: 200vh;
-    min-width: 6rem;
-    right: 0;
+    width: 6rem;
   }
 
   #left-border {
-    min-height: 200vh;
-    min-width: 6rem;
-    left: 0;
-  }
+    width: 6rem;
+  } */
 
   #story-container p {
     font-size: 2.5rem;
