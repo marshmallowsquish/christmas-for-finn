@@ -5,7 +5,6 @@
 }
 
 body {
-  overflow-x: hidden;
   overflow-y: hidden;
   background-color: hsl(240, 100%, 25%);
 }
